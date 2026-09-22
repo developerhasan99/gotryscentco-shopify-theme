@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "th"
+  },
+  "parent": "header-group.json",
+  "sections": {
+    "offer_timebar_39KLTc": {
+      "settings": {
+        "prepend_text": "OSTA 3, SAAT 1 ILMAISEKSI",
+        "append_text": "OSTA NYT"
+      },
+      "blocks": {}
+    }
+  }
+}
