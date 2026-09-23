@@ -319,8 +319,8 @@
         "cta_label": "Lägg till",
         "empty_text": "Inga dofter matchar din sökning.",
         "cta_button_label": "Lägg i varukorgen",
-        "cta_disabled_label": "Lägg till [remaining] dofter till",
-        "cta_disabled_label_one": "Lägg till 1 doft till"
+        "cta_disabled_label": "Lägg till [remaining] dofter",
+        "cta_disabled_label_one": "Lägg till 1 doft"
       }
     }
   },
