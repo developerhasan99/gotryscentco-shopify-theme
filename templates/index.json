@@ -344,7 +344,7 @@
         "category_JatE79": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/tryscent_male_02.png",
+            "image": "shopify://shop_images/MAGYX_Site_For_Him.webp",
             "text": "For Him",
             "link": "shopify://collections/man"
           }
@@ -352,7 +352,7 @@
         "category_kcgbew": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ugc12.png",
+            "image": "shopify://shop_images/MAGYX_Site_For_Her.webp",
             "text": "For Her",
             "link": "shopify://collections/woman"
           }
@@ -360,7 +360,7 @@
         "category_PLwfRa": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/website_unisex.jpg",
+            "image": "shopify://shop_images/MAGYX_Site_Unisex.webp",
             "text": "Unisex",
             "link": "shopify://collections/unisex"
           }
@@ -429,7 +429,7 @@
       "settings": {
         "background_color": "#ffffff",
         "makes_diferent_title": "Vad gör TryScent annorlunda?Allt som spelar roll.",
-        "makes-different-image": "shopify://shop_images/makes-different-img_6a2b529a-e439-40fc-9580-88d632f61ea6.png",
+        "makes-different-image": "shopify://shop_images/MAGYX_Site_Showcase.webp",
         "makes-different-btn-text": "BUY 2 GET 1 FREE - ENDS SOON!",
         "makes-different-btn-link": "",
         "padding_top": 72,
