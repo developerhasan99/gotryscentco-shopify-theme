@@ -15,8 +15,9 @@
   "sections": {
     "offer_timebar_39KLTc": {
       "settings": {
-        "prepend_text": "KJØP 3, FÅ 1 GRATIS",
-        "append_text": "HANDLE NÅ"
+        "prepend_text": "Vårt største salg:",
+        "append_text": "Få 2, betal for 1",
+        "link": "shopify://collections/best-sellers"
       },
       "blocks": {}
     }
