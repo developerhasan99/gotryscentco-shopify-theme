@@ -12,5 +12,14 @@
     "market": "sweden"
   },
   "parent": "header-group.json",
-  "sections": {}
+  "sections": {
+    "offer_timebar_39KLTc": {
+      "settings": {
+        "prepend_text": "Vår största rea:",
+        "append_text": "Få 2, betala för 1",
+        "link": "shopify://collections/best-sellers"
+      },
+      "blocks": {}
+    }
+  }
 }
