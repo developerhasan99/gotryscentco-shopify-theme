@@ -12,5 +12,13 @@
     "market": "sweden"
   },
   "parent": "index.json",
-  "sections": {}
+  "sections": {
+    "home_hero_banner_qmaB3G": {
+      "settings": {
+        "image": "shopify://shop_images/MAGYX_Deal_Header_-_Swedish_-_Desktop_2.png",
+        "mobile_image": "shopify://shop_images/MAGYX_Deal_Header_-_Swedish_-_Mobile.png"
+      },
+      "blocks": {}
+    }
+  }
 }
