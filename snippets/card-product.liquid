@@ -35,6 +35,44 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+
+  <script>
+    (function () {
+      if (window.__cardProductI18nInit) return;
+      window.__cardProductI18nInit = true;
+
+      // Card price labels per Weglot language (falls back to "sv")
+      var cardLabels = {
+        sv: { startsAt: 'Från', discountOff: 'Av' },
+        da: { startsAt: 'Fra', discountOff: 'Rabat' },
+        fi: { startsAt: 'Alkaen', discountOff: 'alennus' },
+        no: { startsAt: 'Fra', discountOff: 'Av' },
+      };
+
+      function translateCardLabels(lang) {
+        var labels = cardLabels[lang] || cardLabels.sv;
+
+        document.querySelectorAll('.starts_at_text').forEach(function (el) {
+          el.textContent = labels.startsAt;
+        });
+
+        document.querySelectorAll('.discount_off_text').forEach(function (el) {
+          el.textContent = labels.discountOff;
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var currentLang = (window.Weglot && typeof Weglot.getCurrentLang === 'function' && Weglot.getCurrentLang()) || 'sv';
+        translateCardLabels(currentLang);
+
+        if (window.Weglot && typeof Weglot.on === 'function') {
+          Weglot.on('languageChanged', function (newLang) {
+            translateCardLabels(newLang);
+          });
+        }
+      });
+    })();
+  </script>
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -48,7 +86,16 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
       assign ratio = 1
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  {%- liquid
+    assign card_price_variant = card_product.selected_or_first_available_variant
+    for card_variant in card_product.variants
+      if card_variant.price == card_product.price
+        assign card_price_variant = card_variant
+        break
+      endif
+    endfor
+  -%}
+  <div class="card-wrapper product-card-wrapper underline-links-hover border border-solid border-gray-200 rounded-lg" data-variant-id="{{ card_price_variant.id }}">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -69,13 +116,16 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
         {% if card_product.tags contains '25_edp' %}
           <div class="absolute z-50 bg-[#b72f33] font-medium text-xs tracking-normal md:text-base text-white px-2 py-1 leading-none top-0 left-0 text-center">25% EDP</div>
         {% endif %}
+        {% if false %}
+          <div class="absolute z-50 bg-[#226139] font-medium text-xs tracking-normal text-white px-2 py-1 leading-none top-0 left-0 text-center">{{ card_product.metafields.custom.custom_label }}</div>
+        {% endif %}
         {%- if card_product.featured_media -%}
-          <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
+          <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %} relative">
             <div class="media media--transparent media--hover-effect">
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               {% assign image_found = false %}
               {% for image in card_product.images %}
-                {% assign curr_currency = localization.country.currency.iso_code | prepend: "bundle_" | downcase %}
+                {% assign curr_currency = localization.country.iso_code | prepend: "bundle_" | downcase %}
                 {% assign img_alt = image.alt | downcase %}
                 {% if img_alt contains "bundle_" and img_alt == curr_currency %}
                   {% assign image_found = true %}
@@ -132,6 +182,26 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
                 >
               {%- endif -%}
             </div>
+            {% unless card_product.tags contains 'Bundle_Price_Show' %}
+              {%- if settings.product_card_promo_text != blank -%}
+                <div class="card__promo-marquee absolute left-0 right-0 bottom-0 bg-[#137c44] text-white" aria-label="{{ settings.product_card_promo_text }}">
+                  <div class="card__promo-marquee-rail">
+                    <div class="card__promo-marquee-group">
+                      <span class="card__promo-marquee-text">{{ settings.x }}</span>
+                      <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+                      <span class="card__promo-marquee-text">{{ settings.product_card_promo_text }}</span>
+                      <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+                    </div>
+                    <div class="card__promo-marquee-group" aria-hidden="true">
+                      <span class="card__promo-marquee-text">{{ settings.product_card_promo_text }}</span>
+                      <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+                      <span class="card__promo-marquee-text">{{ settings.product_card_promo_text }}</span>
+                      <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
+            {% endunless %}
           </div>
         {%- endif -%}
         <div class="card__content">
@@ -158,11 +228,9 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
         <div class="card__information">
 
           <div class="flex items-center flex-wrap gap-x-2 gap-y-1">
-            {% if false %}
-              <div>
-                <div class="text-green-600 text-xs font-semibold bg-green-600/10 px-2 py-1 rounded inline-block">
-                  On Sale
-              </div>
+            {% if card_product.tags contains 'onsale' %}
+              <div class="text-green-600 text-xs font-semibold bg-green-600/10 px-2 py-1 rounded inline-block">
+                Rea
               </div>
             {% endif %}
 
@@ -208,14 +276,25 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
               id="title-{{ section_id }}-{{ card_product.id }}"
             {% endif %}
           >
-            <a
-              href="{{ card_product.url }}"
-              id="CardLink-{{ section_id }}-{{ card_product.id }}"
-              class="full-unstyled-link text-base md:text-xl font-semibold !no-underline hover:opacity-75 !leading-tight tracking-normal my-2"
-              aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
-            >
-              {{ card_product.title }}
-            </a>
+            {% if collection.template_suffix == 'action-modal' %}
+              <a
+                href="{{ card_product.url }}"
+                id="CardLink-{{ section_id }}-{{ card_product.id }}"
+                class="full-unstyled-link text-sm md:text-lg font-semibold !no-underline hover:opacity-75 !leading-tight tracking-normal my-2"
+                aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
+              >
+                {{ card_product.title }}
+              </a>
+            {% else %}
+              <a
+                href="{{ card_product.url }}"
+                id="CardLink-{{ section_id }}-{{ card_product.id }}"
+                class="full-unstyled-link text-base md:text-xl font-semibold !no-underline hover:opacity-75 !leading-tight tracking-normal my-2"
+                aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
+              >
+                {{ card_product.title }}
+              </a>
+            {% endif %}
           </h3>
 
           <div class="card-information">
@@ -224,10 +303,9 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
             {%- endif -%}
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
-
               {% if card_product.metafields.custom.inspiration != blank %}
                 <div class="flex items-center gap-2 mb-3">
-                  <img style="filter: blur(2px);" class="object-contain object-center" src="{{ card_product.metafields.custom.inspiration.value.image |  image_url: width: 90, height: 90 }}" alt="{{ card_product.metafields.custom.inspiration.value.image.alt | escape }}" width="35" height="35">
+                  <img class="object-contain object-center" src="{{ card_product.metafields.custom.inspiration.value.image |  image_url: width: 90, height: 90 }}" alt="{{ card_product.metafields.custom.inspiration.value.image.alt | escape }}" width="35" height="35">
                   <div>
                     <p class="text-xs my-0">Inspirerad av:</p>
                     <h4 class="text-sm font-semibold my-0 line-clamp-1 inspiration_heading">{{ card_product.metafields.custom.inspiration.value.name }}</h4>
@@ -235,22 +313,30 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
                 </div>
               {% endif %}
 
-              <div class="font-bold tracking-normal text-lg flex items-center flex-wrap gap-1">
-                {% unless card_product.tags contains 'onsale' and  card_product.compare_at_price > card_product.price %}
-                  <span class="starts_at_text">Börjar från</span>
+              <div class="font-bold tracking-normal {% if collection.template_suffix == 'action-modal' %}text-sm{% else %}text-base{% endif %} flex items-center flex-wrap gap-1">
+                {% unless card_product.tags contains 'onsale' %}
+                  <span class="starts_at_text">Från</span>
                 {% endunless %}
-                {{ card_product.price | money }}
-                {% if card_product.tags contains 'onsale' and  card_product.compare_at_price > card_product.price %}
+                <span class="ab-current-price">{{ card_product.price | money }}</span>
+                {% if card_product.tags contains 'onsale' %}
                   <span class="line-through text-[#c8202f] font-normal">
                     {{ cart.currency.symbol }}{{ card_product.compare_at_price | money_without_currency }}
                   </span>
-                  {% assign discount_percent = 0 %}
-                  {% assign discount_percent = card_product.compare_at_price | minus: card_product.price | times: 100.0 | divided_by: card_product.compare_at_price | round %}
-                  <span class="inline-block bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
-                    {{ discount_percent }}% Off
-                  </span>
                 {% endif %}
+                {% if card_product.tags contains 'onsale' %}
+              {% assign discount_percent = 0 %}
+              {% if card_product.compare_at_price > card_product.price %}
+                {% assign discount_percent = card_product.compare_at_price | minus: card_product.price | times: 100.0 | divided_by: card_product.compare_at_price | round %}
+              {% endif %}
+              <span class="inline-block bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded">
+                <svg class="size-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.5 3.5-1.5 5.5-3 7.5C7.5 11.4 6 13.3 6 16a6 6 0 0 0 12 0c0-2.6-1.2-4.6-2.6-6.2-.3 1.5-1.1 2.6-2.4 3.2.4-3.8-.2-7.8-1-11z"></path></svg> BOGO
+              </span>
+            {% endif %}
               </div>
+            <div class="mt-2 flex flex-col gap-1 font-bold tracking-normal text-[#c8202f] text-sm leading-tight">
+              <p class="m-0 !text-[#c8202f]">Köp 2, få 2 gratis</p>
+              <p class="m-0 !text-[#c8202f]">Köp 4, få 4 gratis</p>
+            </div>
             
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
@@ -337,104 +423,106 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
         </div>
         {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
         {% if quick_add == 'standard' %}
-          <div class="quick-add no-js-hidden">
-            {%- liquid
-              assign qty_rules = false
-              if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
-                assign qty_rules = true
-              endif
-            -%}
-            {%- if card_product.variants_count > 1 or qty_rules -%}
-              <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
-                <button
-                  id="{{ product_form_id }}-submit"
-                  type="submit"
-                  name="add"
-                  class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add animate-arrow{% endif %}"
-                  aria-haspopup="dialog"
-                  aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-                  data-product-url="{{ card_product.url }}"
-                >
-                  {{ 'products.product.choose_options' | t }}
-                  {%- if horizontal_quick_add -%}
-                    <span class="icon-wrap">
-                      {{- 'icon-arrow.svg' | inline_asset_content -}}
-                    </span>
-                  {%- endif -%}
-                  {%- render 'loading-spinner' -%}
-                </button>
-              </modal-opener>
-              <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
-                <div
-                  role="dialog"
-                  aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
-                  aria-modal="true"
-                  class="quick-add-modal__content global-settings-popup"
-                  tabindex="-1"
-                >
-                  <button
-                    id="ModalClose-{{ card_product.id }}"
-                    type="button"
-                    class="quick-add-modal__toggle"
-                    aria-label="{{ 'accessibility.close' | t }}"
-                  >
-                    {{- 'icon-close.svg' | inline_asset_content -}}
-                  </button>
-                  <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
-                </div>
-              </quick-add-modal>
-            {%- else -%}
-              <product-form data-section-id="{{ section.id }}">
-                {%- form 'product',
-                  card_product,
-                  id: product_form_id,
-                  class: 'form',
-                  novalidate: 'novalidate',
-                  data-type: 'add-to-cart-form'
-                -%}
-                  <input
-                    type="hidden"
-                    name="id"
-                    value="{{ card_product.selected_or_first_available_variant.id }}"
-                    class="product-variant-id"
-                    {% if card_product.selected_or_first_available_variant.available == false %}
-                      disabled
-                    {% endif %}
-                  >
+          {% unless card_product.tags contains 'Bundle_Price_Show' %}
+            <div class="quick-add no-js-hidden">
+              {%- liquid
+                assign qty_rules = false
+                if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
+                  assign qty_rules = true
+                endif
+              -%}
+              {%- if card_product.variants_count > 1 or qty_rules -%}
+                <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
                   <button
                     id="{{ product_form_id }}-submit"
                     type="submit"
                     name="add"
-                    class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                    class="quick-add__submit button button--full-width button--primary{% if horizontal_quick_add %} card--horizontal__quick-add animate-arrow{% endif %} shimmer-btn p-3 rounded-lg hover:bg-[#17803d] bg-[#146b32] transition-colors shadow-xl tracking-normal border-0 text-white w-full button leading-snug !px-2 text-sm md:text-base"
                     aria-haspopup="dialog"
                     aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-                    aria-live="polite"
-                    data-sold-out-message="true"
-                    {% if card_product.selected_or_first_available_variant.available == false %}
-                      disabled
-                    {% endif %}
+                    data-product-url="{{ card_product.url }}?view=quick-add"
                   >
-                    <span>
-                      {%- if card_product.selected_or_first_available_variant.available -%}
-                        {{ 'products.product.add_to_cart' | t }}
-                      {%- else -%}
-                        {{ 'products.product.sold_out' | t }}
-                      {%- endif -%}
-                    </span>
-                    <span class="sold-out-message hidden">
-                      {{ 'products.product.sold_out' | t }}
-                    </span>
+                    {{ 'products.product.choose_options' | t }}
                     {%- if horizontal_quick_add -%}
                       <span class="icon-wrap">
-                        {{- 'icon-plus.svg' | inline_asset_content -}}
+                        {{- 'icon-arrow.svg' | inline_asset_content -}}
                       </span>
                     {%- endif -%}
                     {%- render 'loading-spinner' -%}
                   </button>
-                {%- endform -%}
-              </product-form>
-            {%- endif -%}
-          </div>
+                </modal-opener>
+                <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
+                  <div
+                    role="dialog"
+                    aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
+                    aria-modal="true"
+                    class="quick-add-modal__content global-settings-popup"
+                    tabindex="-1"
+                  >
+                    <button
+                      id="ModalClose-{{ card_product.id }}"
+                      type="button"
+                      class="quick-add-modal__toggle"
+                      aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                      {{- 'icon-close.svg' | inline_asset_content -}}
+                    </button>
+                    <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
+                  </div>
+                </quick-add-modal>
+              {%- else -%}
+                <product-form data-section-id="{{ section.id }}">
+                  {%- form 'product',
+                    card_product,
+                    id: product_form_id,
+                    class: 'form',
+                    novalidate: 'novalidate',
+                    data-type: 'add-to-cart-form'
+                  -%}
+                    <input
+                      type="hidden"
+                      name="id"
+                      value="{{ card_product.selected_or_first_available_variant.id }}"
+                      class="product-variant-id"
+                      {% if card_product.selected_or_first_available_variant.available == false %}
+                        disabled
+                      {% endif %}
+                    >
+                    <button
+                      id="{{ product_form_id }}-submit"
+                      type="submit"
+                      name="add"
+                      class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                      aria-haspopup="dialog"
+                      aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                      aria-live="polite"
+                      data-sold-out-message="true"
+                      {% if card_product.selected_or_first_available_variant.available == false %}
+                        disabled
+                      {% endif %}
+                    >
+                      <span>
+                        {%- if card_product.selected_or_first_available_variant.available -%}
+                          {{ 'products.product.add_to_cart' | t }}
+                        {%- else -%}
+                          {{ 'products.product.sold_out' | t }}
+                        {%- endif -%}
+                      </span>
+                      <span class="sold-out-message hidden">
+                        {{ 'products.product.sold_out' | t }}
+                      </span>
+                      {%- if horizontal_quick_add -%}
+                        <span class="icon-wrap">
+                          {{- 'icon-plus.svg' | inline_asset_content -}}
+                        </span>
+                      {%- endif -%}
+                      {%- render 'loading-spinner' -%}
+                    </button>
+                  {%- endform -%}
+                </product-form>
+              {%- endif -%}
+            </div>  
+          {% endunless %}
         {% elsif quick_add == 'bulk' %}
           {% if card_product.variants_count == 1 %}
             <quick-add-bulk
