@@ -1,3 +1,18 @@
+{% liquid
+  assign sv_marketing_images = shop.metaobjects['marketing_images']['swedish'].images.value
+  assign fi_marketing_images = shop.metaobjects['marketing_images']['finnish'].images.value
+  assign da_marketing_images = shop.metaobjects['marketing_images']['danish'].images.value
+  assign no_marketing_images = shop.metaobjects['marketing_images']['norwegian'].images.value
+
+  assign breakdown_image = blank
+  for item in sv_marketing_images limit: 1
+    assign breakdown_image = item
+  endfor
+  if breakdown_image == blank
+    assign breakdown_image = product.images[1]
+  endif
+%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -19,12 +34,15 @@
   <div class="page-width">
     <div class="grid md:grid-cols-2 gap-8">
       <div>
-        <img
-          class="w-full h-full rounded-lg object-cover"
-          src="{{ product.images[1].src | image_url }}"
-          alt="{{ product.title }}"
-          height="{{ product.images[1].height }}"
-          width="{{ product.images[1].width }}">
+        {%- if breakdown_image -%}
+          <img
+            id="scent-breakdown-img-{{ section.id }}"
+            class="w-full h-full rounded-lg object-cover"
+            src="{{ breakdown_image | image_url }}"
+            alt="{{ product.title }}"
+            height="{{ breakdown_image.height }}"
+            width="{{ breakdown_image.width }}">
+        {%- endif -%}
       </div>
       <div>
         <div class="bg-[#f0f2ec] px-4 py-6 rounded-lg !mb-4">
@@ -70,6 +88,61 @@
     </div>
   </div>
 </div>
+
+<script>
+  (function () {
+    // Scent breakdown image per Weglot language (falls back to "sv")
+    var localImages = {
+      sv: [
+        {% for item in sv_marketing_images limit: 1 %}
+          "{{ item | image_url: width: 1080 }}"
+        {% endfor %}
+      ][0] || null,
+      fi: [
+        {% for item in fi_marketing_images limit: 1 %}
+          "{{ item | image_url: width: 1080 }}"
+        {% endfor %}
+      ][0] || null,
+      da: [
+        {% for item in da_marketing_images limit: 1 %}
+          "{{ item | image_url: width: 1080 }}"
+        {% endfor %}
+      ][0] || null,
+      no: [
+        {% for item in no_marketing_images limit: 1 %}
+          "{{ item | image_url: width: 1080 }}"
+        {% endfor %}
+      ][0] || null
+    };
+
+    function changeLocalImage(newLang) {
+      var src = localImages[newLang] || localImages.sv;
+      if (!src) return;
+
+      var breakdownImageEl = document.getElementById('scent-breakdown-img-{{ section.id }}');
+      if (breakdownImageEl) {
+        breakdownImageEl.src = src;
+      }
+    }
+
+    function initLocalImage() {
+      var currentLang = (window.Weglot && typeof Weglot.getCurrentLang === 'function' && Weglot.getCurrentLang()) || 'sv';
+      changeLocalImage(currentLang);
+
+      if (window.Weglot && typeof Weglot.on === 'function') {
+        Weglot.on('languageChanged', function (newLang) {
+          changeLocalImage(newLang);
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLocalImage);
+    } else {
+      initLocalImage();
+    }
+  })();
+</script>
 
 {% schema %}
   {
