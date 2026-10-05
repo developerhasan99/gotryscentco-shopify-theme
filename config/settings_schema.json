@@ -1451,5 +1451,16 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Custom text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "product_card_promo_text",
+        "label": "Product card promo text",
+        "info": "Scrolling banner shown at the bottom of product card images. Leave blank to hide."
+      }
+    ]
   }
 ]
