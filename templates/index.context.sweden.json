@@ -13,17 +13,17 @@
   },
   "parent": "index.json",
   "sections": {
-    "home_hero_banner_qmaB3G": {
-      "disabled": false,
-      "settings": {
-        "image": "shopify://shop_images/MAGYX_Deal_Header_-_Swedish_-_Desktop_2.png",
-        "mobile_image": "shopify://shop_images/MAGYX_Deal_Header_-_Swedish_-_Mobile.png"
-      },
-      "blocks": {}
-    },
     "homepage_hero_GDeBtq": {
       "disabled": true,
       "settings": {},
+      "blocks": {}
+    },
+    "home_hero_banner_qmaB3G": {
+      "disabled": false,
+      "settings": {
+        "image": "shopify://shop_images/desktop_offer.png",
+        "mobile_image": "shopify://shop_images/mobile_offer.png"
+      },
       "blocks": {}
     }
   }
