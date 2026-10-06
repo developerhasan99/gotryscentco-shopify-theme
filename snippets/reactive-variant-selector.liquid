@@ -20,11 +20,11 @@
     <div class="text-sm italic text-gray-500">100 ml - vald av 8 av 10 kunder</div>
   </div>
 
-  <div class="grid grid-cols-3 gap-3" id="variant-selector">
+  <div class="flex flex-row-reverse gap-3" id="variant-selector">
     {% for variant in product.variants %}
       <button
         type="button"
-        class="variant-button rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Figtree'] relative {% if variant.id == selected_variant.id %}border-green-700{% else %}border-gray-200{% endif %}"
+        class="variant-button flex-grow rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Figtree'] relative {% if variant.id == selected_variant.id %}border-green-700{% else %}border-gray-200{% endif %}"
         data-variant-id="{{ variant.id }}"
         data-variant-title="{{ variant.title }}"
         data-original-price="{{ variant.price | money }}"
