@@ -182,7 +182,7 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
                 >
               {%- endif -%}
             </div>
-            {% unless card_product.tags contains 'Bundle_Price_Show' %}
+            {% comment %} {% unless card_product.tags contains 'Bundle_Price_Show' %}
               {%- if settings.product_card_promo_text != blank -%}
                 <div class="card__promo-marquee absolute left-0 right-0 bottom-0 bg-[#137c44] text-white" aria-label="{{ settings.product_card_promo_text }}">
                   <div class="card__promo-marquee-rail">
@@ -201,7 +201,7 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
                   </div>
                 </div>
               {%- endif -%}
-            {% endunless %}
+            {% endunless %} {% endcomment %}
           </div>
         {%- endif -%}
         <div class="card__content">
@@ -333,10 +333,10 @@ TODO: Show bestseller tag if the product contains "bestseller" tag.
               </span>
             {% endif %}
               </div>
-            <div class="mt-2 flex flex-col gap-1 font-bold tracking-normal text-[#c8202f] text-sm leading-tight">
+            {% comment %} <div class="mt-2 flex flex-col gap-1 font-bold tracking-normal text-[#c8202f] text-sm leading-tight">
               <p class="m-0 !text-[#c8202f]">Köp 2, få 2 gratis</p>
               <p class="m-0 !text-[#c8202f]">Köp 4, få 4 gratis</p>
-            </div>
+            </div> {% endcomment %}
             
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
