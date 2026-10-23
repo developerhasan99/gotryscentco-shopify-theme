@@ -14,12 +14,17 @@
   "parent": "index.json",
   "sections": {
     "homepage_hero_GDeBtq": {
-      "disabled": true,
-      "settings": {},
+      "disabled": false,
+      "settings": {
+        "background_image": "shopify://shop_images/magyx_halloween_desktop.png",
+        "mobile_background_image": "shopify://shop_images/magyx_halloween_mobile.png",
+        "title": "Dina favoritdofter för mindre",
+        "subtitle": "Handla dina favoritdofter till ännu bättre priser! Och spara ännu mer med paketdeals!"
+      },
       "blocks": {}
     },
     "home_hero_banner_qmaB3G": {
-      "disabled": false,
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/desktop_offer.png",
         "mobile_image": "shopify://shop_images/mobile_offer.png"

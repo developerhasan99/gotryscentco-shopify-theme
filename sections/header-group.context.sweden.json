@@ -14,9 +14,10 @@
   "parent": "header-group.json",
   "sections": {
     "offer_timebar_39KLTc": {
+      "disabled": false,
       "settings": {
-        "prepend_text": "Vår största rea:",
-        "append_text": "50 % rabatt",
+        "prepend_text": "Halloween-rea!",
+        "append_text": "30% RABATT PÅ HELA VARUKORGEN",
         "link": "shopify://collections/best-sellers"
       },
       "blocks": {}
