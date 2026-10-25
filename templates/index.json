@@ -71,14 +71,14 @@
       "type": "homepage-hero",
       "name": "Homepage Hero",
       "settings": {
-        "background_color": "#581F10",
+        "background_color": "#581f10",
         "background_image": "shopify://shop_images/magyx_halloween_desktop.png",
         "mobile_background_image": "shopify://shop_images/magyx_halloween_mobile.png",
         "review_text": "ÄLSKAD AV 10 000 KUNDER",
         "title": "Dina favoritdofter för mindre",
-        "title_color": "#FFFFFF",
+        "title_color": "#ffffff",
         "subtitle": "Handla dina favoritdofter till ännu bättre priser! Och spara ännu mer med paketdeals!",
-        "subtitle_color": "#E8E8E8",
+        "subtitle_color": "#e8e8e8",
         "button_text": "Hitta din favoritparfym",
         "button_link": "shopify://collections/best-sellers",
         "secondary_button_text": "Not sure yet? Explore More →",
@@ -86,8 +86,8 @@
         "padding_top": 80,
         "padding_bottom": 80,
         "mobile_padding_top": 36,
-        "mobile_padding_bottom": 400,
-        "custom_css": ""
+        "mobile_padding_bottom": 48,
+        "custom_css": "@media (max-width: 767px) {\n .hero__buttons {\n padding-top: 250px;\n}\n}"
       }
     },
     "home_hero_banner_qmaB3G": {
@@ -192,6 +192,10 @@
         "padding_top": 32,
         "padding_bottom": 32
       }
+    },
+    "fuel06_finder": {
+      "type": "fuel06-finder",
+      "settings": {}
     },
     "popular_products_XDHbay": {
       "type": "popular-products",
@@ -882,10 +886,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "fuel06_finder": {
-      "type": "fuel06-finder",
-      "settings": {}
     }
   },
   "order": [
