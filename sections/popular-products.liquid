@@ -18,27 +18,67 @@
   }
 {%- endstyle -%}
 
-
 <div id="{{ section.id }}" class="section-{{ section.id }}-padding bg-cover bg-center">
   <div class="page-width">
-    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-3">
-      <div class="flex flex-col gap-3 text-center md:text-left">
-        <h2 class="text-3xl md:text-4xl font-black my-0">{{ section.settings.title }}</h2>
-        <div class="[&_p:first-child]:mt-0 [&_p:last-child]:mb-0">
-          {{ section.settings.description }}
-        </div>
+    <h2 class="text-2xl md:text-4xl font-black mt-0 mb-6">{{ section.settings.title }}</h2>
+    <div class="swiper !pt-14 -mt-14" id="slider-{{ section.id }}">
+      <div class="swiper-wrapper">
+        {% for product in section.settings.collection.products limit: 8 %}
+          <div class="swiper-slide max-w-[260px] !h-auto">
+            {% render 'product-card'
+              , product: product
+            %}
+          </div>
+        {% endfor %}
       </div>
-      <a href="{{ section.settings.button_link }}" class="no-underline text-black border-2 border-solid border-black px-6 py-2 shrink-0">{{ section.settings.button_text }}</a>
+      <button class="swiper-button-prev !top-6 !left-[calc(100%-85px)] border border-solid border-gray-200 rounded-full !flex bg-white !size-9 [&]:after:!text-base [&]:after:text-black disabled:!pointer-events-auto" aria-label="Föregående"></button>
+      <button class="swiper-button-next !top-6 !right-0 border border-solid border-gray-200 rounded-full !flex bg-white !size-9 [&]:after:!text-base [&]:after:text-black disabled:!pointer-events-auto" aria-label="Nästa"></button>
     </div>
-    <div class="grid gap-4 md:gap-6 grid-cols-2 md:grid-cols-4">
-      {% for product in section.settings.collection.products limit: 4 %}
-        {% render 'product-card'
-          , product: product
-        %}
-      {% endfor %}
+    <div class="text-center mt-6">
+      <a href="{{ section.settings.button_link }}" class="text-black uppercase tracking-wider">{{ section.settings.button_text }}</a>
     </div>
   </div>
 </div>
+
+{%- comment -%}
+  FUEL_05: the UGC video row rides inside this section because the homepage
+  template sits at Shopify's 25-section cap, so the row cannot be its own
+  section. Gated to the "Senaste dofterna" instance only. The row ships
+  hidden; the test (or the #f05 QA hash) reveals it. Remove with the FUEL_05
+  cleanup.
+{%- endcomment -%}
+{%- comment -%}
+  contains, not ==: in a JSON template section.id is the long
+  "template--<id>__popular_products_XDHbay" form, never the bare key.
+  The title is the belt to that braces: the key dies silently if anyone
+  deletes and re-adds the section in the editor (the bot rewrites
+  templates/index.json from editor state several times a day), and the
+  title dies silently if anyone rewords the heading. Either one alone
+  keeps the row alive; only losing both drops it.
+{%- endcomment -%}
+{%- if section.id contains 'popular_products_XDHbay' or section.settings.title == '🔥Senaste dofterna' -%}
+  {% render 'fuel05-ugc-home-row' %}
+{%- endif -%}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('#slider-{{ section.id }}', {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '#slider-{{ section.id }} .swiper-button-next',
+            prevEl: '#slider-{{ section.id }} .swiper-button-prev',
+        },
+
+        breakpoints: {
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            }
+        }
+    });
+  });
+</script>
 
 {% schema %}
   {
