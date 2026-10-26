@@ -271,13 +271,40 @@
             "video_url": "",
             "product": ""
           }
+        },
+        "video_WF3PTh": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/baa8d6ccc21d4d4683ac5ee1a7ac4100.SD-480p-1.5Mbps-93044583.mp4",
+            "video_url": "",
+            "product": ""
+          }
+        },
+        "video_yxJNE8": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/938402e6513447aab5b85b254fea9984.SD-480p-1.5Mbps-92843388.mp4",
+            "video_url": "",
+            "product": "bergamot-pepper-ambroxan"
+          }
+        },
+        "video_MVHGcE": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/73022be108864290bab62feaa5898a34.HD-1080p-2.5Mbps-92843391.mp4",
+            "video_url": "",
+            "product": "magic-perfume-no-360m"
+          }
         }
       },
       "block_order": [
         "video_nxRcVP",
         "video_3RYRtF",
         "video_XpVUzb",
-        "video_VeFVPn"
+        "video_VeFVPn",
+        "video_WF3PTh",
+        "video_yxJNE8",
+        "video_MVHGcE"
       ],
       "name": "UGC Video Row",
       "settings": {
