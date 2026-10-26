@@ -152,7 +152,6 @@
         "review_CGhLzh": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/ugc8.png",
             "content": "<p>\"This is my first purchase and I am hooked. I will never purchase perfume from anywhere else again. I could never find a dupe scent that really smelled authentic and consistent.\"</p>",
             "author": "Killian P.",
             "date": "1 day ago",
@@ -189,7 +188,6 @@
             "review_image": "shopify://shop_images/dupestore_3221df98-e409-4141-82ec-bdbe62af3756.jpg",
             "content": "<p>\"Been trying to find scents that smell expensive as well as lasted long, to no avail. The fit is exactly what I was looking for..\"</p>",
             "author": "Tiana N.",
-            "author_image": "shopify://shop_images/ugc15.png",
             "date": "2 days ago",
             "rating": 4,
             "show_verified_badge": true,
@@ -254,7 +252,6 @@
         "review_Qbcx4t": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/ugc7.png",
             "content": "<p>\"Is perfect and the beautiful 🥰🥰🥰\"</p>",
             "author": "Lidis A.",
             "date": "2 Months ago",
@@ -266,7 +263,6 @@
         "review_3rR47r": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/ugc15.png",
             "content": "<p>\"Huele muy bien, me fascinó\"</p>",
             "author": "Castillo B.",
             "date": "3 Months ago",
@@ -377,7 +373,6 @@
         "review_HFDJke": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/ugc3.png",
             "content": "<p>\"The product came in nicely. The perfume wasnt broken, didnt leak and was in good shape. Scent is perfect and didnt reek bad oder. I love it, high quality\"</p>",
             "author": "Roxanne S",
             "date": "5 Months ago",
@@ -455,7 +450,6 @@
         "review_hgkJM8": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/ugc1.png",
             "content": "<p>\"Great brand and great products!\"</p>",
             "author": "Juliana B",
             "date": "4 Months ago",

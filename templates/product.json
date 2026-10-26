@@ -1076,7 +1076,7 @@
             "author": "Freja Sandström",
             "date": "5 dagar sedan",
             "rating": 4,
-            "show_verified_badge": false,
+            "show_verified_badge": true,
             "product": ""
           }
         },
@@ -1087,7 +1087,7 @@
             "author": "Ella Lundberg",
             "date": "3 veckor sedan",
             "rating": 5,
-            "show_verified_badge": false,
+            "show_verified_badge": true,
             "product": ""
           }
         },
@@ -1109,7 +1109,7 @@
             "author": "Anton Sandberg",
             "date": "2 veckor sedan",
             "rating": 4,
-            "show_verified_badge": false,
+            "show_verified_badge": true,
             "product": ""
           }
         },
@@ -1153,7 +1153,7 @@
             "author": "Filip Åkesson",
             "date": "1 månad sedan",
             "rating": 5,
-            "show_verified_badge": false,
+            "show_verified_badge": true,
             "product": ""
           }
         },
@@ -1186,7 +1186,7 @@
             "author": "Elin Blomberg",
             "date": "2 veckor sedan",
             "rating": 5,
-            "show_verified_badge": false,
+            "show_verified_badge": true,
             "product": ""
           }
         },
@@ -1220,7 +1220,7 @@
             "author": "Nils Wikström",
             "date": "1 månad sedan",
             "rating": 5,
-            "show_verified_badge": false,
+            "show_verified_badge": true,
             "product": "alpha-oil"
           }
         },
