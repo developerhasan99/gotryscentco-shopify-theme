@@ -16,6 +16,12 @@
           "type": "title",
           "settings": {}
         },
+        "custom_rating_text_dPCxiy": {
+          "type": "custom_rating_text",
+          "settings": {
+            "text": "4,9/5 baserat på över 10 000 recensioner"
+          }
+        },
         "selling_points_9tdid6": {
           "type": "selling_points",
           "disabled": true,
@@ -226,6 +232,7 @@
       },
       "block_order": [
         "title",
+        "custom_rating_text_dPCxiy",
         "selling_points_9tdid6",
         "cheaper_than_yDGYG9",
         "variant_picker",
