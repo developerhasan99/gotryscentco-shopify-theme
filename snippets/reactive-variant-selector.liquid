@@ -14,91 +14,110 @@
 %}
 
 {% unless product.available %}
-  {% render 'sold-out-alternative', product: product %}
-{% else %}
-{% if product.variants.size > 1 %}
-  {% comment %} Variant Selector {% endcomment %}
-  <div class="flex justify-between items-center mb-3 !mt-6">
-    <h2 class="m-0 text-base font-semibold">Välj Storlek:</h2>
-    <div class="text-sm italic text-gray-500">100 ml - vald av 8 av 10 kunder</div>
-  </div>
+  {% render 'sold-out-alternative'
+    , product: product %}
+  {% else %}
+  {% if product.variants.size > 1 and product.available %}
+    {% comment %} Variant Selector {% endcomment %}
+    <div class="flex justify-between items-center mb-3 !mt-6">
+      <h2 class="m-0 text-base font-semibold">Välj storlek:</h2>
+      <div class="text-sm italic text-gray-500">100 ml - vald av 8 av 10 kunder</div>
+    </div>
 
-  <div class="flex flex-row-reverse gap-3 mb-3" id="variant-selector">
-    {% for variant in product.variants %}
-      <button
-        type="button"
-        class="variant-button flex-grow rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Figtree'] relative {% if variant.id == selected_variant.id %}border-green-700{% else %}border-gray-200{% endif %}"
-        data-variant-id="{{ variant.id }}"
-        data-variant-title="{{ variant.title }}"
-        data-original-price="{{ variant.price | money }}"
-        data-compare-price="{{ variant.compare_at_price | money }}">
-        <div class="text-sm font-semibold">{{ variant.title }}</div>
-        {% if variant.title contains '50' %}
-          <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5 whitespace-nowrap">Mest Populär</span>
-        {% endif %}
-        {% if variant.title contains '100' %}
-          <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#22613a] px-2 py-0.5 whitespace-nowrap">Bäst värde</span>
-        {% endif %}
-      </button>
-    {% endfor %}
-  </div>
-  {% if product.tags contains 'variant_note' %}
-    <div id="variantSuggestion" class="mb-4 text-black text-lg"></div>
+    <div class="grid grid-cols-3 gap-3" id="variant-selector">
+      {% for variant in product.variants %}
+        {% liquid
+          assign variant_ml = 0
+          if variant.title contains '100'
+            assign variant_ml = 100
+          elsif variant.title contains '50'
+            assign variant_ml = 50
+          elsif variant.title contains '30'
+            assign variant_ml = 30
+          endif
+
+          if variant_ml > 0
+            assign price_per_ml = variant.price | times: 1.0 | divided_by: variant_ml
+          endif
+        %}
+        <button
+          type="button"
+          class="variant-button rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Figtree'] relative {% if variant.id == selected_variant.id %}border-green-700{% else %}border-gray-200{% endif %}"
+          data-variant-id="{{ variant.id }}"
+          data-variant-ml="{{ variant_ml }}"
+          data-variant-title="{{ variant.title }}"
+          data-original-price="{{ variant.price | money }}"
+          data-afterpay-price="{{ variant.price |  divided_by: 4 |  money }}"
+          data-compare-price="{{ variant.compare_at_price | money }}">
+          <div class="text-sm font-semibold">{{ variant.title }}</div>
+          {% if variant.title contains '50' %}
+            <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5 whitespace-nowrap">Mest Populär</span>
+          {% endif %}
+          {% if variant.title contains '100' %}
+            <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#22613a] px-2 py-0.5 whitespace-nowrap">Bäst värde</span>
+          {% endif %}
+          {% if variant_ml > 0 %}
+            <div class="text-xs text-gray-500 price-per-ml">{{ price_per_ml | money }} / ml</div>
+          {% endif %}
+        </button>
+      {% endfor %}
+    </div>
+    {% if product.tags contains 'variant_note' %}
+      <div id="variantSuggestion" class="mb-4 text-black text-lg"></div>
+    {% endif %}
   {% endif %}
-{% endif %}
 
-{% comment %} Add to cart form {% endcomment %}
-<product-form
-  class="product-form !m-0"
-  data-hide-errors="{{ gift_card_recipient_feature_active }}"
-  data-section-id="{{ section.id }}">
-  {%- form 'product'
-    , product
-    , id: product_form_id
-    , class: 'form'
-    , novalidate: 'novalidate'
-    , data-type: 'add-to-cart-form' -%}
-    <input
-      type="hidden"
-      name="id"
-      id="product-variant-id"
-      value="{{ selected_variant.id }}"
-      class="product-variant-id">
-    {% if product.metafields.custom.choose_your_fragrances_options != blank %}
-      {% render 'bundle-mix-dropdown' %}
-    {% else %}
+  {% comment %} Add to cart form {% endcomment %}
+  <product-form
+    class="product-form !m-0"
+    data-hide-errors="{{ gift_card_recipient_feature_active }}"
+    data-section-id="{{ section.id }}">
+    {%- form 'product'
+      , product
+      , id: product_form_id
+      , class: 'form'
+      , novalidate: 'novalidate'
+      , data-type: 'add-to-cart-form' -%}
       <input
         type="hidden"
-        name="properties[Inspired By]"
-        value="{{ product.metafields.custom.nuta }}" />
-    {% endif %}
-    <button
-      type="submit"
-      name="add"
-      value="1"
-      class="atc-button shimmer-btn cta_product_from_submit_btn flex flex-wrap items-center !mb-0 text-2xl !pb-3 !pt-3 rounded-lg button bg-[#22613a] hover:bg-[#368856] transition-colors shadow-xl tracking-normal button--full-width button--primary"
-      aria-label="Add to cart"
+        name="id"
+        id="product-variant-id"
+        value="{{ selected_variant.id }}"
+        class="product-variant-id">
       {% if product.metafields.custom.choose_your_fragrances_options != blank %}
-      disabled="disabled"
-      {% endif %}>
-      <span>{{ 'products.product.add_to_cart' | t }}</span>
-      <div class="ml-2 pl-2 border-0 border-l flex items-center border-solid border-gray-200/20">
-        <div
-          class="inline-block text-lg bg-[#1E5834] px-3 rounded"
-          id="product-price"
-          role="status"
-          {{ block.shopify_attributes }}>
-          {% if selected_variant.compare_at_price > selected_variant.price %}
-            <span class="compare-price line-through text-white/50 text-base">{{ selected_variant.compare_at_price | money }}</span>
-          {% endif %}
-          <span class="current-price">{{ selected_variant.price | money }}</span>
+        {% render 'bundle-mix-dropdown' %}
+      {% else %}
+        <input
+          type="hidden"
+          name="properties[Inspired By]"
+          value="{{ product.metafields.custom.nuta }}" />
+      {% endif %}
+      <button
+        type="submit"
+        name="add"
+        value="1"
+        class="atc-button shimmer-btn cta_product_from_submit_btn flex flex-wrap items-center !mb-0 text-2xl !pb-3 !pt-3 rounded-lg button bg-[#22613a] hover:bg-[#368856] transition-colors shadow-xl tracking-normal button--full-width button--primary"
+        aria-label="Add to cart"
+        {% if product.metafields.custom.choose_your_fragrances_options != blank %}
+        disabled="disabled"
+        {% endif %}>
+        <span>{{ 'products.product.add_to_cart' | t }}</span>
+        <div class="ml-2 pl-2 border-0 border-l flex items-center border-solid border-gray-200/20">
+          <div
+            class="inline-block text-lg bg-[#1E5834] px-3 rounded"
+            id="product-price"
+            role="status"
+            {{ block.shopify_attributes }}>
+            {% if selected_variant.compare_at_price > selected_variant.price %}
+              <span class="compare-price line-through text-white/50 text-base">{{ selected_variant.compare_at_price | money }}</span>
+            {% endif %}
+            <span class="current-price">{{ selected_variant.price | money }}</span>
+          </div>
         </div>
-      </div>
-      {%- render 'loading-spinner' -%}
-    </button>
-  {%- endform -%}
-</product-form>
-{% endunless %}
+        {%- render 'loading-spinner' -%}
+      </button>
+    {%- endform -%}
+  </product-form>{% endunless %}
 {%- comment -%} FUEL_06 product page entry (2026-09-30), see snippets/fuel06-pdp-link.liquid. {%- endcomment -%}
 {%- render 'fuel06-pdp-link' -%}
 
