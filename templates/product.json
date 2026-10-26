@@ -27,8 +27,13 @@
           "disabled": true,
           "settings": {}
         },
+        "inspired_by_YtFaP4": {
+          "type": "inspired_by",
+          "settings": {}
+        },
         "cheaper_than_yDGYG9": {
           "type": "cheaper_than",
+          "disabled": true,
           "settings": {
             "number": 0
           }
@@ -53,13 +58,6 @@
           "type": "price",
           "disabled": true,
           "settings": {}
-        },
-        "text_GrNJKg": {
-          "type": "text",
-          "settings": {
-            "text": "<strong>Toppnoter:</strong> {{ product.metafields.custom.top_notes.value.heading.value }}",
-            "text_style": "body"
-          }
         },
         "quantity_selector": {
           "type": "quantity_selector",
@@ -234,11 +232,11 @@
         "title",
         "custom_rating_text_dPCxiy",
         "selling_points_9tdid6",
+        "inspired_by_YtFaP4",
         "cheaper_than_yDGYG9",
         "variant_picker",
         "text_fQLMC7",
         "price",
-        "text_GrNJKg",
         "quantity_selector",
         "buy_buttons",
         "atc_bundle_builder_aLJUaV",
