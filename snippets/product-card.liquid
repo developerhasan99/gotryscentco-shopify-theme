@@ -46,7 +46,7 @@
     </span>
   </h3>
 
-  {% if product.metafields.custom.inspiration != blank %}
+  {% if product.metafields.custom.inspiration.value != blank %}
     <div class="flex items-center gap-2 mb-3">
       <img style="filter: blur(3px);" class="object-contain object-center" src="{{ product.metafields.custom.inspiration.value.image |  image_url: width: 90, height: 90 }}" alt="{{ product.metafields.custom.inspiration.value.image.alt | escape }}" width="35" height="35">
       <div>
