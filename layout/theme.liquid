@@ -467,20 +467,19 @@ body {
     </script>
     {% comment %} {% render 'navidium-script' %} {% endcomment %}
     {% comment %} {% render 'sb-preload-booster' %}  {% endcomment %}
-    {% unless template.name == 'product' or page.handle == 'listicle-v1' or page.handle == 'listicle-v2' %}
-      {% render 'fragrance-search' %}
-    {% endunless %}
-  {% comment %} {% render 'checkout-modal' %} {% endcomment %}
+    {% comment %} {% render 'checkout-modal' %} {% endcomment %}
 
-  {%- comment -%}
-    FUEL_06 finder dialog on product pages, opened by the link under the buy
-    button (snippets/fuel06-pdp-link.liquid). Here rather than in a section
-    because the product templates are at Shopify's 25 section cap. The link
-    stays hidden on any page where this dialog is not rendered.
-  {%- endcomment -%}
-  {%- if request.page_type == 'product' and settings.fuel06_pdp_enabled -%}
-    {%- render 'fuel06-finder', mode: 'assets' -%}
-    {%- render 'fuel06-finder', mode: 'dialog' -%}
-  {%- endif -%}
+    {%- comment -%}
+      FUEL_06 finder dialog on product pages, opened by the link under the buy
+      button (snippets/fuel06-pdp-link.liquid). Here rather than in a section
+      because the product templates are at Shopify's 25 section cap. The link
+      stays hidden on any page where this dialog is not rendered.
+    {%- endcomment -%}
+    {%- if request.page_type == 'product' and settings.fuel06_pdp_enabled -%}
+      {%- render 'fuel06-finder'
+        , mode: 'assets' -%}
+      {%- render 'fuel06-finder'
+        , mode: 'dialog' -%}
+    {%- endif -%}
   </body>
 </html>
