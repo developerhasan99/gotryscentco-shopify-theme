@@ -237,6 +237,53 @@
         "padding_bottom": 72
       }
     },
+    "fuel05_ugc_row_6xcFFD": {
+      "type": "fuel05-ugc-row",
+      "blocks": {
+        "video_nxRcVP": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/b58364a24e90479d995c8cc6dc96a73b.SD-480p-1.5Mbps-92843392.mp4",
+            "video_url": "",
+            "product": "magic-perfume-no-469w"
+          }
+        },
+        "video_3RYRtF": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/f5fcc4ff10f64169ae5095bfe2f58bcc.SD-480p-1.5Mbps-92843390.mp4",
+            "video_url": "",
+            "product": "magic-perfume-no-360m"
+          }
+        },
+        "video_XpVUzb": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/5a878e22b12744d19421b651e8d4a241.SD-480p-1.5Mbps-93044584.mp4",
+            "video_url": "",
+            "product": "4x-100ml-perfume-bottles"
+          }
+        },
+        "video_VeFVPn": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/818572396d674cd5910b24ef0fe6a1a3.SD-480p-1.5Mbps-92843389.mp4",
+            "video_url": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_nxRcVP",
+        "video_3RYRtF",
+        "video_XpVUzb",
+        "video_VeFVPn"
+      ],
+      "name": "UGC Video Row",
+      "settings": {
+        "heading": "Älskad av tusentals"
+      }
+    },
     "review_grid_H3xfHP": {
       "type": "review-grid",
       "blocks": {
@@ -898,6 +945,7 @@
     "popular_products_XDHbay",
     "custom_liquid_JU8Jj3",
     "popular_products_pNDeh4",
+    "fuel05_ugc_row_6xcFFD",
     "review_grid_H3xfHP",
     "image_and_text",
     "home_category_wNQCfP",
