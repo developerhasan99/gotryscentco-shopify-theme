@@ -523,6 +523,7 @@
         "review_gF6wKD": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/bottle_02_tilted_closeup.jpg",
             "content": "<p>\"Detta är mitt första köp och jag är såld. Jag kommer aldrig köpa parfym någon annanstans igen. Jag har aldrig hittat en inspirerad doft som verkligen luktar autentisk och konsekvent.\"</p>",
             "author": "Erik Lindström",
             "date": "1 dag sedan",
@@ -534,6 +535,7 @@
         "review_ByDgLX": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/bottle_02_closeup_alt.jpg",
             "content": "<p>\"Den bästa doften jag sniffat på väldigt länge — noterna gör mig lycklig. Den stannar i min rotation för alltid.\"</p>",
             "author": "Astrid Lindahl",
             "date": "2 dagar sedan",
@@ -545,6 +547,7 @@
         "review_YpX9h9": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/bottle_03_angled.jpg",
             "content": "<p>\"Luktar underbart, jag blev helt förtjust.\"<br/><br/></p>",
             "author": "Gustav Berglund",
             "date": "2 månader sedan",
@@ -556,6 +559,7 @@
         "review_dKt8hn": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/bottle_02_closeup_alt_25fa526a-0b24-4195-8d3f-02a50e042f35.jpg",
             "content": "<p>\"Alla tre dofter jag fick är mycket bra. De håller länge och luktar precis som de ska. Jag var bara lite missnöjd med leveranstiden — men jag har redan lagt en ny beställning, så räkna med lite väntetid. Haha!\"</p>",
             "author": "Alice Nygren",
             "date": "2 dagar sedan",
@@ -577,15 +581,16 @@
             "product": "fresh-escape-premium"
           }
         },
-        "review_RNkDTG": {
+        "review_myTAe8": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Fantastiskt märke och fantastiska produkter!\"</p>",
-            "author": "Elsa Bergman",
-            "date": "4 månader sedan",
+            "review_image": "shopify://shop_images/bottle_04_handheld_closeup.jpg",
+            "content": "<p>\"Luktar väldigt gott men håller inte lika länge som man skulle vilja.\"</p>",
+            "author": "Ella Lundberg",
+            "date": "3 veckor sedan",
             "rating": 5,
-            "show_verified_badge": true,
-            "product": "4x-50ml-perfume-bottles"
+            "show_verified_badge": false,
+            "product": ""
           }
         },
         "review_wczQWw": {
@@ -602,6 +607,7 @@
         "review_jNFxYP": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/face_bottle_03_bottle_forward_square.jpg",
             "content": "<p>\"En av mina favoritdofter. Kom snabbt. Luktar så gott.\"</p>",
             "author": "William Söderberg",
             "date": "2 dagar sedan",
@@ -632,17 +638,6 @@
             "product": "4x-100ml-perfume-bottles"
           }
         },
-        "review_myTAe8": {
-          "type": "review",
-          "settings": {
-            "content": "<p>\"Luktar väldigt gott men håller inte lika länge som man skulle vilja.\"</p>",
-            "author": "Ella Lundberg",
-            "date": "3 veckor sedan",
-            "rating": 5,
-            "show_verified_badge": false,
-            "product": ""
-          }
-        },
         "review_DzktgE": {
           "type": "review",
           "settings": {
@@ -668,6 +663,7 @@
         "review_MBb63N": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/bottle_02_flatlay_closeup.jpg",
             "content": "<p>\"Luktar precis som Luna Rossa Carbon, men mycket billigare. Kan knappt tro hur nära den är.\"</p>",
             "author": "Anton Sandberg",
             "date": "2 veckor sedan",
@@ -687,9 +683,21 @@
             "product": "alpha-oil"
           }
         },
+        "review_RNkDTG": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Fantastiskt märke och fantastiska produkter!\"</p>",
+            "author": "Elsa Bergman",
+            "date": "4 månader sedan",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": "4x-50ml-perfume-bottles"
+          }
+        },
         "review_UfaJJE": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/bottle_05_pair_alt.jpg",
             "content": "<p>\"Produkten kom fint förpackad. Parfymen var inte trasig, läckte inte och var i gott skick. Doften är perfekt och luktar härligt. Jag älskar den hög kvalitet.\"</p>",
             "author": "Olivia Ström",
             "date": "2 månader sedan",
@@ -734,6 +742,7 @@
         "review_GJGq9n": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/bottle_08_boxed_pick.jpg",
             "content": "<p>\"Jag är nöjd med TryScent. Doften liknar originalet väldigt mycket och håller bra. Förpackningen är snygg och flaskan ser fin ut. Sammantaget ett utmärkt alternativ om du vill ha en kvalitetsparfym till ett rimligt pris.\"</p>",
             "author": "Filip Åkesson",
             "date": "1 månad sedan",
@@ -911,16 +920,16 @@
         "review_YpX9h9",
         "review_dKt8hn",
         "review_VrkHXh",
-        "review_RNkDTG",
+        "review_myTAe8",
         "review_wczQWw",
         "review_jNFxYP",
         "review_9fWXGn",
         "review_iPjTCz",
-        "review_myTAe8",
         "review_DzktgE",
         "review_NBGz7p",
         "review_MBb63N",
         "review_hAJXhk",
+        "review_RNkDTG",
         "review_UfaJJE",
         "review_rad8A6",
         "review_BLYVmX",
