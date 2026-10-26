@@ -90,9 +90,15 @@
               {%- when '@app' -%}
                 {% render block %}
               {% when 'inspired_by' %}
-                <div class="line-clamp-1 relative !-my-2">
-                  <span class="italic tracking-tighter">Inspirerad av</span> <a href="{{ routes.root_url }}/search?q={{ product.metafields.custom.forgaylawyers | url_encode }}" class="font-semibold text-lg not-italic tracking-tight text-gray-900 ![text-decoration:none]">{{ product.metafields.custom.forgaylawyers }}</a>
-                </div>
+                {% if product.metafields.custom.inspiration.value != blank %}
+                  <div class="flex items-center gap-2 mb-3" {{ block.shopify_attributes }}>
+                    <img style="filter: blur(3px);" class="object-contain object-center" src="{{ product.metafields.custom.inspiration.value.image |  image_url: width: 90, height: 90 }}" alt="{{ product.metafields.custom.inspiration.value.image.alt | escape }}" width="35" height="35">
+                    <div>
+                      <p class="text-xs my-0">Inspirerad av:</p>
+                      <h4 class="text-sm font-semibold my-0 line-clamp-1 inspiration_heading">{{ product.metafields.custom.inspiration.value.name }}</h4>
+                    </div>
+                  </div>
+                {% endif %}
               {% when 'cheaper_than' %}
                 <div>
                   {% if product.metafields.custom.original_retail_price != blank %}
