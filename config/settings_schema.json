@@ -1453,13 +1453,13 @@
     ]
   },
   {
-    "name": "Custom text",
+    "name": "Product Card",
     "settings": [
       {
-        "type": "text",
+        "type": "textarea",
         "id": "product_card_promo_text",
-        "label": "Product card promo text",
-        "info": "Scrolling banner shown at the bottom of product card images. Leave blank to hide."
+        "label": "Product Card promo text",
+        "info": "One message per line. Leave empty to hide this text on product cards."
       }
     ]
   },
