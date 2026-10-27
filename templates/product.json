@@ -434,18 +434,6 @@
         "mobile_padding_bottom": 40
       }
     },
-    "stacks_up_ijAJWh": {
-      "type": "stacks-up",
-      "name": "Stacks Up",
-      "settings": {
-        "background_color": "#fcfbf9",
-        "title": "How TryScent Stacks Up",
-        "btn_text": "View All",
-        "btn_url": "shopify://collections/all",
-        "padding_top": 32,
-        "padding_bottom": 72
-      }
-    },
     "massive_review_kNQzrH": {
       "type": "massive-review",
       "blocks": {
@@ -935,7 +923,6 @@
     "scent_breakdown_rG4H3T",
     "stacks_up_xtpACd",
     "image_and_text_RDUKE4",
-    "stacks_up_ijAJWh",
     "massive_review_kNQzrH",
     "related-products",
     "cupid-images-slider",
