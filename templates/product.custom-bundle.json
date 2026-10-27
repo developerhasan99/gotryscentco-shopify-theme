@@ -179,6 +179,78 @@
         "padding_bottom": 32
       }
     },
+    "stacks_up_gUQbah": {
+      "type": "stacks-up",
+      "blocks": {
+        "stack_dHg6CC": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Parfymkoncentration",
+            "stack_subheading": "Mer olja = längre hållbarhet"
+          }
+        },
+        "stack_GDrNzQ": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Håller 8–12 timmar på huden",
+            "stack_subheading": "Håller längre än de flesta designer-EDT"
+          }
+        },
+        "stack_ry8Err": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "90% billigare än designerpriset",
+            "stack_subheading": "Utan att kompromissa med kvaliteten"
+          }
+        },
+        "stack_Rk6NCc": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Exakt samma doft som originalet",
+            "stack_subheading": "Skapad med samma doftackord"
+          }
+        },
+        "stack_86dmUh": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Skickas inom 24 timmar",
+            "stack_subheading": "Inget väntande i butik"
+          }
+        },
+        "stack_jjQhHF": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Djurförsöksfri formula",
+            "stack_subheading": "Rena ingredienser, säkra för huden"
+          }
+        },
+        "stack_DtrXbV": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "60 dagars pengarna-tillbaka-garanti",
+            "stack_subheading": "Älska den eller få full återbetalning — inga frågor"
+          }
+        }
+      },
+      "block_order": [
+        "stack_dHg6CC",
+        "stack_GDrNzQ",
+        "stack_ry8Err",
+        "stack_Rk6NCc",
+        "stack_86dmUh",
+        "stack_jjQhHF",
+        "stack_DtrXbV"
+      ],
+      "name": "Stacks Up",
+      "settings": {
+        "background_color": "#faf9f6",
+        "title": "Du kan jämföra doft. Du bör också jämföra matematik.",
+        "btn_text": "Bläddra bland fler dofter",
+        "btn_url": "/products/6x-50ml-perfume-bottles",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
     "massive_review_kNQzrH": {
       "type": "massive-review",
       "blocks": {
@@ -658,6 +730,7 @@
     "main",
     "pdp_bundle_builder",
     "feature_highlights_QPVALL",
+    "stacks_up_gUQbah",
     "massive_review_kNQzrH",
     "related-products",
     "cupid-images-slider",
