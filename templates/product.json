@@ -80,10 +80,19 @@
         },
         "atc_bundle_builder_aLJUaV": {
           "type": "atc_bundle_builder",
-          "settings": {}
+          "settings": {
+            "collection_handles": "top-sellers:Bestsellers,new"
+          }
+        },
+        "tsr_block_wBLHK7": {
+          "type": "tsr_block",
+          "settings": {
+            "product": "6x-50ml-perfume-bottles"
+          }
         },
         "videos_Mhak3R": {
           "type": "videos",
+          "disabled": true,
           "settings": {
             "video1": "shopify://files/videos/Perfume rev 2  2nd  UGC 15-6-25.mp4",
             "video_poster_1": "shopify://shop_images/videoframe_5040.png",
@@ -136,10 +145,9 @@
         },
         "money_back_eKXfnE": {
           "type": "money_back",
-          "disabled": true,
           "settings": {
-            "title": "Try It Risk-Free",
-            "text": "<p>Less Than 1% claim Money Back.</p>"
+            "title": "Prova i 60 dagar, riskfritt.",
+            "text": "Färre än 0,5 % av köparna använder vår pengarna-tillbaka-garanti."
           }
         },
         "people_purchased_cYxaYJ": {
@@ -247,6 +255,7 @@
         "quantity_selector",
         "buy_buttons",
         "atc_bundle_builder_aLJUaV",
+        "tsr_block_wBLHK7",
         "videos_Mhak3R",
         "dialect_notes_NHiwen",
         "reactive_variant_selector_JyFrkg",
