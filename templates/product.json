@@ -390,17 +390,6 @@
         "padding_bottom": 72
       }
     },
-    "manus_comparison_b6n9Rh": {
-      "type": "manus-comparison",
-      "name": "Manus Comparison",
-      "settings": {
-        "background_color": "#0a0a0f",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "button_url": "",
-        "button_text": "Bläddra bland fler dofter"
-      }
-    },
     "image_and_text_RDUKE4": {
       "type": "image-and-text",
       "blocks": {
@@ -443,6 +432,18 @@
         "padding_bottom": 72,
         "mobile_padding_top": 40,
         "mobile_padding_bottom": 40
+      }
+    },
+    "stacks_up_ijAJWh": {
+      "type": "stacks-up",
+      "name": "Stacks Up",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "title": "How TryScent Stacks Up",
+        "btn_text": "View All",
+        "btn_url": "shopify://collections/all",
+        "padding_top": 32,
+        "padding_bottom": 72
       }
     },
     "massive_review_kNQzrH": {
@@ -933,8 +934,8 @@
     "feature_highlights_QPVALL",
     "scent_breakdown_rG4H3T",
     "stacks_up_xtpACd",
-    "manus_comparison_b6n9Rh",
     "image_and_text_RDUKE4",
+    "stacks_up_ijAJWh",
     "massive_review_kNQzrH",
     "related-products",
     "cupid-images-slider",
