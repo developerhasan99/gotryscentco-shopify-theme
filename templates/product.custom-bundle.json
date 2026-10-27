@@ -27,19 +27,8 @@
           "disabled": true,
           "settings": {}
         },
-        "inspired_by_YtFaP4": {
-          "type": "inspired_by",
-          "settings": {}
-        },
-        "custom_liquid_hrizd3": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'scent-profiling' %}"
-          }
-        },
         "cheaper_than_yDGYG9": {
           "type": "cheaper_than",
-          "disabled": true,
           "settings": {
             "number": 0
           }
@@ -238,8 +227,6 @@
         "title",
         "custom_rating_text_dPCxiy",
         "selling_points_9tdid6",
-        "inspired_by_YtFaP4",
-        "custom_liquid_hrizd3",
         "cheaper_than_yDGYG9",
         "variant_picker",
         "text_fQLMC7",
