@@ -515,6 +515,18 @@
     margin-top: auto
 }
 
+.mb-5 {
+    margin-bottom: 20px
+}
+
+.ml-1\.5 {
+    margin-left: 6px
+}
+
+.mr-1\.5 {
+    margin-right: 6px
+}
+
 .box-border {
     box-sizing: border-box
 }
@@ -794,6 +806,10 @@
     height: 100vh
 }
 
+.h-3\.5 {
+    height: 14px
+}
+
 .max-h-\[60vh\] {
     max-height: 60vh
 }
@@ -880,6 +896,10 @@
 
 .w-\[46\%\] {
     width: 46%
+}
+
+.w-3\.5 {
+    width: 14px
 }
 
 .min-w-\[1\.25rem\] {
@@ -1410,6 +1430,10 @@
 
 .border-\[3px\] {
     border-width: 3px
+}
+
+.\!border-0 {
+    border-width: 0px !important
 }
 
 .border-y {
@@ -3011,6 +3035,10 @@
 
 .\[filter\:grayscale\(1\)\] {
     filter: grayscale(1)
+}
+
+.\[filter\:grayscale\(100\%\)\] {
+    filter: grayscale(100%)
 }
 
 .\[filter\:invert\(1\)\] {
