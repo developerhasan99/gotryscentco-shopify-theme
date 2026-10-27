@@ -533,5 +533,28 @@
       "expanded": "Lahjakortin saajalomake laajennettuna",
       "collapsed": "Lahjakortin saajalomake pienennettynä"
     }
+  },
+  "bundle": {
+    "upgrade_cta": "Päivitä {{ size }}ML-kokoon {{ price }} lisähintaan.",
+    "free_bottle": "Ilmainen pullo",
+    "choose_your_perfume": "Valitse hajuvesi",
+    "select_more": "VALITSE {{ count }} LISÄÄ",
+    "shop_now": "OSTA NYT",
+    "your_bundle_is_ready": "PAKETTISI ON VALMIS! 👑",
+    "add_more_scent": "LISÄÄ {{ count }} TUOKSUA VIELÄ",
+    "add_more_scents": "LISÄÄ {{ count }} TUOKSUA VIELÄ",
+    "add_more_prefix": "LISÄÄ",
+    "add_more_suffix_singular": "ENEMMÄN TUOKSUA",
+    "add_more_suffix_plural": "LISÄÄ TUOKSUJA",
+    "top_sellers": "Suosituimmat myyjät",
+    "top_sellers_men": "Parhaat myyjät miehille",
+    "top_sellers_women": "Parhaat myyjät naisille",
+    "redirecting_to_checkout": "Uudelleenohjataan kassalle...",
+    "inspired_by": "Innoittamana:",
+    "price_per_bottle": "Hinta on vain {{ price }}/pullo",
+    "tsr_offer_save": "Säästä {{ percent }}%",
+    "tsr_offer_heading": "Paras tarjouksemme: Kokoa oma pakettisi!",
+    "tsr_offer_price_prefix": "Vain",
+    "tsr_offer_price_suffix": "per pullo"
   }
 }

@@ -164,31 +164,28 @@
                 {% endif %}
                 {% if product.tags contains 'Bundle_Price_Show' %}
                   <div id="price-{{ section.id }}" class="bundle-price-pdp" role="status" {{ block.shopify_attributes }}>
-                    {% if product.compare_at_price > product.price %}
-                      {% assign discount = product.compare_at_price | minus: product.price %}
-                      {% assign discount_percent = discount | times: 100 | divided_by: product.compare_at_price | round %}
-                    {% endif %}
-
-                    <div class="flex items-center gap-3 text-2xl">
+                    <div class="flex flex-wrap items-center gap-x-3">
                       {% if product.compare_at_price > product.price %}
-                        <span class="text-red-600 font-bold text-[28px] discount-percent">
+                        <span class="text-gray-500 font-semibold line-through text-base md:text-[19px]">
+                          {{ product.compare_at_price | money }}
+                        </span>
+                      {% endif %}
+                      <span class="text-black font-bold text-[23px] md:text-[27px]">
+                        {{ product.price | money }}
+                      </span>
+                      {% if product.compare_at_price > product.price %}
+                        {% assign discount = product.compare_at_price | minus: product.price %}
+                        {% assign discount_percent = discount | times: 100 | divided_by: product.compare_at_price | round %}
+                        <span class="bg-red-600 text-white font-bold px-2 text-xs md:text-base">
                           -{{ discount_percent }}%
                         </span>
                       {% endif %}
-
-                      <span class="text-black font-bold text-[28px] product-price">
-                        {{ product.price | money }}
-                      </span>
-
-                      {% if product.compare_at_price > product.price %}
-                        <span class="text-gray-500 font-semibold line-through text-[22px] compare-price">
-                         Designer Price: {{ product.compare_at_price | money }}
-                        </span>
-                      {% endif %}
                     </div>
+                    {% assign price_per_bottle = product.price | divided_by: product.metafields.custom.bundle_size | money %}
                     <div class="text-lg font-semibold text-black leading-normal">
-                      Works out at just {{ product.price | divided_by: product.metafields.custom.choose_your_fragrances_options | money }}/bottle
+                      {{ 'bundle.price_per_bottle' | t: price: price_per_bottle }}
                     </div>
+                    <div class="inline-flex items-center gap-1 mt-2 bg-[#F2F8F4] text-[#22613A] font-bold text-sm rounded-full py-1 px-2 border border-solid border-[#cfe6d8]"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11l-1 8.5L19.5 10H13z"></path></svg>Du sparar 670 kr idag</div>
                   </div>
                 {% endif %}
                 
@@ -203,9 +200,9 @@
               {%- when 'atc_bundle_builder' -%}
                 <div class="atc-bundle-builder" {{ block.shopify_attributes }}>
                    {% if product.metafields.custom.choose_your_fragrances_options != blank %}
-                    {% render 'special-offer-builder', product: product %}
+                    {% render 'special-offer-builder', product: product, block: block %}
                   {% else %}
-                    {% render 'reactive-variant-selector', product: product %}
+                    {% render 'reactive-variant-selector', product: product, section: section %}
                   {% endif %}
                 </div>
               {%- when 'magic_perfume_atc' -%}
@@ -1059,7 +1056,16 @@
     {
       "type": "atc_bundle_builder",
       "name": "Atc Bundle Builder",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "collection_handles",
+          "label": "Collection Handles",
+          "info": "Comma-separated collection handles, e.g. men:Men,women,new:New arrivals. Each collection adds its products to the pool and shows as a filter button. Optional button text goes after a colon; otherwise the collection's \"Filter label\" metafield (custom.filter_label) or its title is used.",
+          "default": "top-sellers:Bestsellers,new"
+        }
+      ]
     },
     {
       "type": "magic_perfume_atc",

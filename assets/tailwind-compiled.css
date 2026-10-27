@@ -185,6 +185,14 @@
     top: 2px
 }
 
+.left-2 {
+    left: 8px
+}
+
+.top-\[7px\] {
+    top: 7px
+}
+
 .isolate {
     isolation: isolate
 }
@@ -508,6 +516,14 @@
     margin-top: auto
 }
 
+.\!mt-2 {
+    margin-top: 8px !important
+}
+
+.mr-auto {
+    margin-right: auto
+}
+
 .box-border {
     box-sizing: border-box
 }
@@ -694,6 +710,11 @@
     height: 14px
 }
 
+.size-2 {
+    width: 8px;
+    height: 8px
+}
+
 .\!h-auto {
     height: auto !important
 }
@@ -868,6 +889,10 @@
 
 .min-w-\[1rem\] {
     min-width: 16px
+}
+
+.min-w-\[1\.25rem\] {
+    min-width: 20px
 }
 
 .max-w-16 {
@@ -1384,6 +1409,10 @@
     border-width: 3px
 }
 
+.border-\[1\.5px\] {
+    border-width: 1.5px
+}
+
 .border-y {
     border-top-width: 1px;
     border-bottom-width: 1px
@@ -1547,6 +1576,21 @@
 
 .border-white\/10 {
     border-color: rgb(255 255 255 / 0.1)
+}
+
+.\!border-\[\#22613A\] {
+    --tw-border-opacity: 1 !important;
+    border-color: rgb(34 97 58 / var(--tw-border-opacity, 1)) !important
+}
+
+.border-\[\#e3e8e5\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(227 232 229 / var(--tw-border-opacity, 1))
+}
+
+.border-\[\#cfe6d8\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(207 230 216 / var(--tw-border-opacity, 1))
 }
 
 .border-b-gray-100 {
@@ -1840,6 +1884,20 @@
     background-color: rgb(255 255 255 / 0.6)
 }
 
+.bg-white\/50 {
+    background-color: rgb(255 255 255 / 0.5)
+}
+
+.bg-\[\#f1f4f2\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 244 242 / var(--tw-bg-opacity, 1))
+}
+
+.bg-\[\#F2F8F4\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(242 248 244 / var(--tw-bg-opacity, 1))
+}
+
 .bg-opacity-50 {
     --tw-bg-opacity: 0.5
 }
@@ -1886,6 +1944,10 @@
 
 .fill-green-700 {
     fill: #15803d
+}
+
+.fill-\[\#22613A\] {
+    fill: #22613A
 }
 
 .object-contain {
@@ -2085,6 +2147,11 @@
     padding-bottom: 2px
 }
 
+.\!py-3 {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important
+}
+
 .\!pb-3 {
     padding-bottom: 12px !important
 }
@@ -2209,6 +2276,14 @@
     padding-top: 32px
 }
 
+.pl-8 {
+    padding-left: 32px
+}
+
+.pt-0 {
+    padding-top: 0px
+}
+
 .text-left {
     text-align: left
 }
@@ -2303,6 +2378,10 @@
 .text-xs {
     font-size: 12px;
     line-height: 16px
+}
+
+.text-\[23px\] {
+    font-size: 23px
 }
 
 .\!font-black {
@@ -2688,6 +2767,11 @@
     color: rgb(202 138 4 / var(--tw-text-opacity, 1))
 }
 
+.text-\[\#6b7280\] {
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity, 1))
+}
+
 .underline {
     text-decoration-line: underline
 }
@@ -2948,6 +3032,10 @@
     text-decoration: none !important
 }
 
+.\[text-overflow\:ellipsis\] {
+    text-overflow: ellipsis
+}
+
 .\[transform\:rotate\(-3deg\)\] {
     transform: rotate(-3deg)
 }
@@ -3186,6 +3274,11 @@
     border-color: rgb(22 163 74 / var(--tw-border-opacity, 1))
 }
 
+.hover\:border-\[\#22613A\]:hover {
+    --tw-border-opacity: 1;
+    border-color: rgb(34 97 58 / var(--tw-border-opacity, 1))
+}
+
 .hover\:bg-\[\#02491c\]:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(2 73 28 / var(--tw-bg-opacity, 1))
@@ -3266,6 +3359,16 @@
     color: rgb(255 255 255 / var(--tw-text-opacity, 1))
 }
 
+.hover\:\!text-white:hover {
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important
+}
+
+.hover\:text-\[\#22613A\]:hover {
+    --tw-text-opacity: 1;
+    color: rgb(34 97 58 / var(--tw-text-opacity, 1))
+}
+
 .hover\:underline:hover {
     text-decoration-line: underline
 }
@@ -3334,6 +3437,11 @@
 .focus\:border-green-700:focus {
     --tw-border-opacity: 1;
     border-color: rgb(21 128 61 / var(--tw-border-opacity, 1))
+}
+
+.focus\:border-\[\#22613A\]:focus {
+    --tw-border-opacity: 1;
+    border-color: rgb(34 97 58 / var(--tw-border-opacity, 1))
 }
 
 .focus\:bg-transparent:focus {
@@ -3411,6 +3519,14 @@
 
     .md\:-top-2 {
         top: -8px
+    }
+
+    .md\:right-2 {
+        right: 8px
+    }
+
+    .md\:top-2 {
+        top: 8px
     }
 
     .md\:-order-1 {
@@ -3740,6 +3856,14 @@
     .md\:text-xs {
         font-size: 12px;
         line-height: 16px
+    }
+
+    .md\:text-\[19px\] {
+        font-size: 19px
+    }
+
+    .md\:text-\[27px\] {
+        font-size: 27px
     }
 
     .md\:tracking-wider {
