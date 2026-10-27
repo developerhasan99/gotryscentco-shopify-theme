@@ -246,6 +246,20 @@
         "padding_bottom": 72
       }
     },
+    "you_may_like_YAVKzE": {
+      "type": "you-may-like",
+      "name": "You May Like",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "title": "Du kanske också gillar",
+        "description": "",
+        "collection": "best-sellers",
+        "button_text": "View All",
+        "button_link": "shopify://collections/all",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
     "feature_highlights_QPVALL": {
       "type": "feature-highlights",
       "blocks": {
@@ -915,6 +929,7 @@
   },
   "order": [
     "main",
+    "you_may_like_YAVKzE",
     "feature_highlights_QPVALL",
     "scent_breakdown_rG4H3T",
     "stacks_up_xtpACd",
