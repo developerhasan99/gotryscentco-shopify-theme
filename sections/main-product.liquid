@@ -226,15 +226,71 @@
                   {% endfor %}
                 </ul>
               {%- when 'money_back' -%}
-                <div class="flex items-center gap-3 bg-[#f0f2ec] p-6 rounded">
-                  <img src="{{ block.settings.image | img_url: '64x64' }}" height="64" width="64" alt="{{ block.settings.label }}" class="size-16" />
-                  <div>
-                    <h3 class="text-lg font-semibold tracking-normal m-0">{{ block.settings.title }}</h3>
-                    <div class="m-0 leading-snug tracking-normal [&>p]:m-0 text-gray-950">
-                      {{ block.settings.text }}
+                <div class="my-6" {{ block.shopify_attributes }}>
+                  <div class="flex items-center gap-3 text-base">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0623/0691/0402/files/thimbs_up.png?v=1751372431"
+                      alt="Tumme upp märke"
+                      class="w-10 h-10 flex-shrink-0"
+                      width="40"
+                      height="40" />
+                    <div class="text-slate-900">
+                      <strong class="font-semibold">{{ block.settings.title }}</strong>
+                      <span class="block">{{ block.settings.text }}</span>
                     </div>
                   </div>
                 </div>
+              {% when 'tsr_block' %}
+                {% if block.settings.product != blank %}
+                  <a href="{{ block.settings.product.url }}" class="!mb-6 flex items-stretch overflow-hidden rounded-xl border-2 border-[#cc303d] border-solid bg-white text-inherit no-underline shadow-[0_1px_2px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_2px_10px_rgba(17,24,39,0.08)]">
+                    <div class="flex w-[46%] max-w-[260px] shrink-0 items-center bg-[#f2ede7]">
+                      {%- liquid
+                        assign tsr_localized_image_found = false
+                        assign tsr_currency_alt = localization.country.iso_code | prepend: 'bundle_' | downcase
+                      -%}
+                      {%- for tsr_image in block.settings.product.images -%}
+                        {%- assign tsr_img_alt = tsr_image.alt | downcase -%}
+                        {%- if tsr_img_alt contains 'bundle_' and tsr_img_alt == tsr_currency_alt -%}
+                          {%- assign tsr_localized_image_found = true -%}
+                          <img
+                            src="{{ tsr_image.src | image_url: width: 720 }}"
+                            alt="{{ tsr_image.alt }}"
+                            class="block h-auto w-full object-contain"
+                            loading="lazy"
+                            width="{{ tsr_image.width }}"
+                            height="{{ tsr_image.height }}">
+                        {%- endif -%}
+                      {%- endfor -%}
+                      {%- if tsr_localized_image_found == false -%}
+                        <img
+                          src="{{ block.settings.product.featured_image | image_url: width: 720 }}"
+                          alt="{{ block.settings.product.title | escape }}"
+                          class="block h-auto w-full object-contain"
+                          loading="lazy"
+                          width="720"
+                          height="720">
+                      {%- endif -%}
+                    </div>
+
+                    <div class="flex min-w-0 flex-1 flex-col justify-center p-4 md:p-5">
+                      {% if block.settings.product.compare_at_price > block.settings.product.price %}
+                        {% assign discount = block.settings.product.compare_at_price | minus: block.settings.product.price %}
+                        {% assign discount_percent = discount | times: 100 | divided_by: block.settings.product.compare_at_price | round %}
+                        <span class="inline-block self-start rounded-full bg-green-100 text-green-700 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide">
+                          {{ 'bundle.tsr_offer_save' | t: percent: discount_percent }}
+                        </span>
+                      {% endif %}
+                      <h3 class="mt-2 mb-1 tracking-normal font-semibold leading-snug text-slate-900 text-sm sm:text-base md:text-lg">
+                        {{ 'bundle.tsr_offer_heading' | t }}
+                      </h3>
+                      <p class="m-0 tracking-normal text-slate-600 text-sm md:text-base">
+                        {{ 'bundle.tsr_offer_price_prefix' | t }}
+                        <strong class="text-slate-900">{{ block.settings.product.price | divided_by: block.settings.product.metafields.custom.bundle_size | money }}</strong>
+                        {{ 'bundle.tsr_offer_price_suffix' | t }}
+                      </p>
+                    </div>
+                  </a>
+                {% endif %}
               {% when 'people_purchased' %}
                 <div class="grid grid-cols-3 items-center gap-4 bg-[#f0f2ec] p-6 rounded">
                   <div class="col-span-1 flex">
@@ -1082,7 +1138,7 @@
       "name": "Selling Points",
       "limit": 1
     },
-    {
+        {
       "type": "money_back",
       "name": "Money Back Guarantee",
       "limit": 1,
@@ -1096,12 +1152,23 @@
           "type": "text",
           "id": "title",
           "label": "Money Back Guarantee Title",
-          "default": "Smell Before You Commit"
+          "default": "Prova i 60 dagar, riskfritt."
         },
         {
-          "type": "richtext",
+          "type": "text",
           "id": "text",
-          "label": "Money Back Guarantee Text"
+          "label": "Färre än 0,5 % av köparna använder vår pengarna-tillbaka-garanti."
+        }
+      ]
+    },
+    {
+      "type": "tsr_block",
+      "name": "TSR Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
         }
       ]
     },

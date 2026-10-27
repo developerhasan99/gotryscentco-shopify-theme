@@ -121,13 +121,25 @@
 {%- comment -%} FUEL_06 product page entry (2026-09-30), see snippets/fuel06-pdp-link.liquid. {%- endcomment -%}
 {%- render 'fuel06-pdp-link' -%}
 
-<div class="!my-6">
-  <p class="my-0 text-center font-semibold tracking-normal">
-    Levererat till
-    <span class="shipping_location">{{ localization.country.name }}</span>
-    inom 5 arbetsdagar. Inga tullavgifter.
-  </p>
+<div>
+  <img
+    class="max-w-full mx-auto mt-8 block [filter:grayscale(1)]"
+    src="{{ 'payment-badge.png' | asset_url }}"
+    alt="Payment methods"
+    width="100%"
+    height="auto"
+    loading="lazy">
 </div>
+
+{% unless product.template_suffix == 'cro-deck' %}
+  <div class="!my-6">
+    <p class="my-0 text-center font-semibold tracking-normal">
+      Levereras till
+      <span class="shipping_location">{{ localization.country.name }}</span>
+      inom 5 arbetsdagar.
+    </p>
+  </div>
+{% endunless %}
 
 <div class="my-6">
   <div class="flex items-center gap-3 text-base">
