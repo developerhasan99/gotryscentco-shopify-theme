@@ -1945,6 +1945,10 @@
     background-color: rgb(250 248 243 / var(--tw-bg-opacity, 1))
 }
 
+.bg-\[\#ffffff1a\] {
+    background-color: #ffffff1a
+}
+
 .bg-opacity-50 {
     --tw-bg-opacity: 0.5
 }
@@ -2803,6 +2807,11 @@
     color: inherit
 }
 
+.text-\[\#8dffcf\] {
+    --tw-text-opacity: 1;
+    color: rgb(141 255 207 / var(--tw-text-opacity, 1))
+}
+
 .underline {
     text-decoration-line: underline
 }
@@ -3064,6 +3073,10 @@
 
 .\[grid-template-columns\:1\.1fr_1fr_1fr\] {
     grid-template-columns: 1.1fr 1fr 1fr
+}
+
+.\[overflow-wrap\:anywhere\] {
+    overflow-wrap: anywhere
 }
 
 .\[rotate\:-20deg\] {
@@ -3800,6 +3813,11 @@
     .md\:py-20 {
         padding-top: 80px;
         padding-bottom: 80px
+    }
+
+    .md\:px-4 {
+        padding-left: 16px;
+        padding-right: 16px
     }
 
     .md\:pb-12 {
