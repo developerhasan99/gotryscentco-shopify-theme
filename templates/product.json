@@ -160,6 +160,10 @@
           "disabled": true,
           "settings": {}
         },
+        "expanded_notes_HrkwnP": {
+          "type": "expanded_notes",
+          "settings": {}
+        },
         "collapsible_tab_XYmgtQ": {
           "type": "collapsible_tab",
           "settings": {
@@ -266,6 +270,7 @@
         "money_back_eKXfnE",
         "people_purchased_cYxaYJ",
         "cta_review_g7n3R8",
+        "expanded_notes_HrkwnP",
         "collapsible_tab_XYmgtQ",
         "collapsible_tab_PtUaDN",
         "collapsible_tab_tUEYBx",
