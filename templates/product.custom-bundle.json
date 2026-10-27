@@ -70,7 +70,9 @@
         },
         "atc_bundle_builder_aLJUaV": {
           "type": "atc_bundle_builder",
-          "settings": {}
+          "settings": {
+            "collection_handles": "top-sellers:Bestsellers,new"
+          }
         },
         "videos_Mhak3R": {
           "type": "videos",
@@ -142,68 +144,12 @@
           "disabled": true,
           "settings": {}
         },
-        "collapsible_tab_XYmgtQ": {
+        "collapsible_tab_W8RYmF": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Beskrivning",
-            "icon": "clipboard",
-            "content": "{{ product.description }}",
-            "page": ""
-          }
-        },
-        "collapsible_tab_PtUaDN": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Scent Notes",
+            "heading": "Är det parfymerat vatten?",
             "icon": "perfume",
-            "content": "{{ product.metafields.custom.scent_profile | metafield_tag }}",
-            "page": ""
-          }
-        },
-        "collapsible_tab_tUEYBx": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Varför är era parfymer så prisvärda?",
-            "icon": "perfume",
-            "content": "<p>Våra parfymer är prisvärda eftersom vi fokuserar på det som verkligen betyder något – själva doften – och eliminerar onödiga kostnader:</p><p>✔️ Ingen dyr reklam – Vi investerar inte i kampanjer med kändisar eller lyxig varumärkesprofilering, vilket gör att vi kan erbjuda lägre priser. </p><p>✔️ Enkel, elegant förpackning – Istället för kostsamma designflaskor använder vi minimalistiska, stilrena förpackningar som håller produktionskostnaderna nere.</p><p>✔️ Direktförsäljningsmodell – Genom att sälja online och tappa upp parfymerna själva undviker vi mellanhänder och återförsäljarnas påslag.</p><p>✔️ Unika kompositioner, förstklassig kvalitet. Resultatet? Du får långvariga parfymer av hög kvalitet till ett rimligt pris.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_nhKiAc": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Är det ett parfymerat vatten?",
-            "icon": "perfume",
-            "content": "<p>Våra dofter är så mycket mer än bara parfymerat vatten. Hos Try Scent erbjuder vi högkvalitativ Eau de Parfum (EDP) med en parfymoljekoncentration på 19–21 %, vilket garanterar en långvarig doft, utmärkt spridning och djup. </p><p>Till skillnad från lätta kroppssprayer eller parfymerat vatten är våra kompositioner skapade för att sitta kvar på huden i många timmar – ofta till och med ända till nästa dag. Du får en intensiv, raffinerad doftupplevelse till en bråkdel av priset jämfört med lyxmärken.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_pCrhqV": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Hur länge håller doften?",
-            "icon": "perfume",
-            "content": "<p>Våra parfymer är framtagna för att hålla länge. Tack vare en hög koncentration av doftolja på 19–21 % kvarstår de flesta av våra dofter på huden i upp till 12 timmar, och ofta kan doften fortfarande kännas på kläder eller hår dagen efter. </p><p>Naturligtvis beror den exakta hållbarheten på den specifika doften, din hudtyp och hur den appliceras – men jämfört med vanliga alternativ eller lätta Eau de Toilette-parfymer ger Try Scent-parfymerna betydligt bättre prestanda.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_gkD4Ei": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Is the inspired fragrance different?",
-            "icon": "perfume",
-            "content": "<p>No — our inspired fragrances are designed as an <strong>exact copy</strong> of the originals from famous luxury brands. We carefully recreate the same fragrance structure, using identical scent notes and raw materials wherever possible.</p><p>✔️ <strong>1:1 fragrance impression</strong> – The scent is virtually indistinguishable from the original, even for experienced perfume lovers.<br/><br/>✔️ <strong>Same longevity and projection</strong> – Thanks to the high concentration of perfume oils (19-21%), our fragrances last just as long as the originals.<br/><br/>✔️ <strong>Affordable price, no compromise</strong> – You get the exact same olfactory experience without paying for the logo, marketing, or designer packaging.</p><p>In short: Our perfumes are identical to luxury brands in scent, quality, and durability — the only difference is the price.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_pdYPYn": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Vad betyder att en parfym har en koncentration på 19–21 %?",
-            "icon": "perfume",
-            "content": "<p>Procenttalet anger koncentrationen av rena doftoljor i produkten. I vårt fall innebär en parfymkoncentration på 19–21 % följande:</p><p>✔️ Den klassificeras som Eau de Parfum (EDP) – en av de mest intensiva parfymtyperna som finns för daglig användning.</p><p>✔️ Det höga innehållet av doftolja garanterar utmärkt hållbarhet – doften kvarstår på huden i många timmar, ofta ända till nästa dag.</p><p>✔️ Stark spridning och djup – doften utvecklas i lager och behåller en rik, bestående karaktär. Som jämförelse: 5–15 % doftoljor. 15–25 %, så våra parfymer ligger i den övre delen av denna kategori. 25 %, men är ofta betydligt dyrare. </p><p>Kort sagt: Med 19–21 % får du en intensiv, långvarig och högkvalitativ doftupplevelse – perfekt för alla som vill ha en prestanda i designerklass till ett överkomligt pris.</p>",
+            "content": "<p>Våra dofter går långt utöver enkelt parfymerat vatten. På Try Scent erbjuder vi högkvalitativ Eau de Parfum (EDP) med en parfymoljakoncentration på 19–21 %, vilket garanterar en långvarig doft, utmärkt projektion och djup.</p><p>Till skillnad från lätta kroppssprayer eller parfymerade vatten är våra kompositioner gjorda för att sitta kvar på din hud i många timmar – ofta till och med nästa dag. Du kan njuta av en intensiv, förfinad doftupplevelse till en bråkdel av priset för lyxmärken.</p>",
             "page": ""
           }
         },
@@ -245,13 +191,7 @@
         "money_back_eKXfnE",
         "people_purchased_cYxaYJ",
         "cta_review_g7n3R8",
-        "collapsible_tab_XYmgtQ",
-        "collapsible_tab_PtUaDN",
-        "collapsible_tab_tUEYBx",
-        "collapsible_tab_nhKiAc",
-        "collapsible_tab_pCrhqV",
-        "collapsible_tab_gkD4Ei",
-        "collapsible_tab_pdYPYn",
+        "collapsible_tab_W8RYmF",
         "collapsible_tab_ydfzCq",
         "share"
       ],
@@ -359,65 +299,6 @@
     },
     "stacks_up_xtpACd": {
       "type": "stacks-up",
-      "blocks": {
-        "product_UbVFVF": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "name": "Price",
-            "our_stack": "From $7.99",
-            "other_brands": "$325+"
-          }
-        },
-        "product_N4m9Xk": {
-          "type": "product",
-          "settings": {
-            "name": "Longevity",
-            "our_stack": "12 +Hours",
-            "other_brands": "6–8 hours*"
-          }
-        },
-        "product_7gcPEg": {
-          "type": "product",
-          "settings": {
-            "name": "Transparency",
-            "our_stack": "Full note breakdown",
-            "other_brands": "Hidden formula"
-          }
-        },
-        "product_DXc6Vb": {
-          "type": "product",
-          "settings": {
-            "name": "Perfume Grade",
-            "our_stack": "Premium High Concentration",
-            "other_brands": "Various"
-          }
-        },
-        "product_xX66RW": {
-          "type": "product",
-          "settings": {
-            "name": "Returns",
-            "our_stack": "60-Day Satisfaction Guarantee",
-            "other_brands": "Final sale"
-          }
-        },
-        "product_rbFra6": {
-          "type": "product",
-          "settings": {
-            "name": "Skin Friendly",
-            "our_stack": "Formulated for daily wear",
-            "other_brands": "Can be harsh"
-          }
-        }
-      },
-      "block_order": [
-        "product_UbVFVF",
-        "product_N4m9Xk",
-        "product_7gcPEg",
-        "product_DXc6Vb",
-        "product_xX66RW",
-        "product_rbFra6"
-      ],
       "disabled": true,
       "name": "Stacks Up",
       "settings": {
