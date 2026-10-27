@@ -390,6 +390,49 @@
         "padding_bottom": 72
       }
     },
+    "image_and_text_UBpNnL": {
+      "type": "image-and-text",
+      "blocks": {
+        "heading_GYUfyp": {
+          "type": "heading",
+          "settings": {
+            "content": "Vad innebär det att en doft tillverkas i EU?",
+            "heading_type": "h2",
+            "font_size": 32,
+            "mobile_font_size": 24
+          }
+        },
+        "text_cPcp9x": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Vi tillverkar alla våra parfymer enligt EU:s strikta kosmetikastandarder. Det betyder att du får en produkt som är lika säker för din hud som den är lyxig för dina sinnen.</p><ul><li><strong>Strikta säkerhetskrav:</strong> Vi använder uteslutande ingredienser godkända av IFRA, vilket garanterar att doften är skonsam och säker att bära.</li><li><strong>Inga billigagenvägar:</strong> Inga billiga utspädningar eller tveksamma kemikalier från gråzoner utanför Europa.</li><li><strong>Certifierade anläggningar:</strong> Varje flaska blandas och fylls i kontrollerade, europeiska laboratorier med full spårbarhet.</li></ul>",
+            "mobile_content": "",
+            "font_size": 18
+          }
+        }
+      },
+      "block_order": [
+        "heading_GYUfyp",
+        "text_cPcp9x"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "image": "shopify://shop_images/MAGYX_Site_02_2.webp",
+        "rounded_image": true,
+        "image_placement": "1",
+        "mobile_image_placement": "under_heading",
+        "button_text": "",
+        "button_url": "",
+        "columns_gap": 40,
+        "rows_gap": 20,
+        "content_alignment": "center",
+        "blocks_gap": 24,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
     "image_and_text_RDUKE4": {
       "type": "image-and-text",
       "blocks": {
@@ -922,6 +965,7 @@
     "feature_highlights_QPVALL",
     "scent_breakdown_rG4H3T",
     "stacks_up_xtpACd",
+    "image_and_text_UBpNnL",
     "image_and_text_RDUKE4",
     "massive_review_kNQzrH",
     "related-products",
