@@ -144,7 +144,16 @@
           "disabled": true,
           "settings": {}
         },
-        "collapsible_tab_W8RYmF": {
+        "collapsible_tab_XYmgtQ": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Beskrivning",
+            "icon": "clipboard",
+            "content": "{{ product.description }}",
+            "page": ""
+          }
+        },
+        "collapsible_tab_Xzzjc7": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Är det parfymerat vatten?",
@@ -153,12 +162,41 @@
             "page": ""
           }
         },
+        "collapsible_tab_PtUaDN": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Scent Notes",
+            "icon": "perfume",
+            "content": "{{ product.metafields.custom.scent_profile | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_tab_gkD4Ei": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Is the inspired fragrance different?",
+            "icon": "perfume",
+            "content": "<p>No — our inspired fragrances are designed as an&nbsp;<strong>exact copy</strong>&nbsp;of the originals from famous luxury brands. We carefully recreate the same fragrance structure, using identical scent notes and raw materials wherever possible.</p><p>✔️&nbsp;<strong>1:1 fragrance impression</strong>&nbsp;– The scent is virtually indistinguishable from the original, even for experienced perfume lovers.<br/><br/>✔️&nbsp;<strong>Same longevity and projection</strong>&nbsp;– Thanks to the high concentration of perfume oils (19-21%), our fragrances last just as long as the originals.<br/><br/>✔️&nbsp;<strong>Affordable price, no compromise</strong>&nbsp;– You get the exact same olfactory experience without paying for the logo, marketing, or designer packaging.</p><p>In short: Our perfumes are identical to luxury brands in scent, quality, and durability — the only difference is the price.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_pdYPYn": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Vad betyder 19-21% parfym?",
+            "icon": "perfume",
+            "content": "<p>Procentandelen anger koncentrationen av rena doftoljor i produkten. I vårt fall betyder 19-21 % parfymkoncentration:</p><p>✔️ Den klassificeras som Eau de Parfum (EDP) — en av de mest intensiva parfymtyperna som finns för dagligt bruk.</p><p>✔️ Högt innehåll av doftoljor säkerställer utmärkt hållbarhet — doften håller sig märkbar på huden i många timmar, ofta till nästa dag.</p><p>✔️ Stark projektion och djup — doften vecklas ut i lager och bibehåller en rik, bestående karaktär. Som jämförelse: 5-15 % doftoljor. 15-25 %, så våra parfymer ligger i den övre delen av denna kategori. 25 %, men är ofta mycket dyrare. Kort sagt: Med 19-21 % får du en intensiv, långvarig och högkvalitativ doftupplevelse — perfekt för alla som vill ha designerliknande prestanda till ett överkomligt pris.</p>",
+            "page": ""
+          }
+        },
         "collapsible_tab_ydfzCq": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "ANSVARSFRISKRIVNING AVSEENDE JÄMFÖRANDE REKLAM",
+            "heading": "ANSVARSFRISKRIVNING FÖR JÄMFÖRANDE REKLAM",
             "icon": "star",
-            "content": "<p>Observera att de produkter som nämns på vår webbplats endast är vägledande och under inga omständigheter ska förväxlas med de faktiska varumärkena från butikskedjor, designers eller nischmärken. Namn och upphovsrätt, oavsett om de används eller inte, tillhör respektive tillverkare och/eller designer. </p><p>Dessa är endast inspirationskällor och är inte ”identiska” med någon annan doft eller originalprodukt. Tryscent-parfymer ska inte förväxlas med originalprodukter och vi har ingen anknytning till tillverkarna av dessa namnlösa designermärken. </p><p>Alla ”varumärken”, oavsett om de används eller inte, tillhör sina respektive ägare. Vi är inte godkända av, direkt knutna till, underhållna, auktoriserade eller sponsrade av någon varumärkesinnehavare som nämns eller inte nämns här. </p><p>Användningen av produktnamn sker endast i identifierings- och referenssyfte och innebär inte någon koppling till varumärkesinnehavaren.</p>",
+            "content": "<p>Observera att produkter som nämns på vår webbplats endast är en vägledning och under inga omständigheter ska förväxlas med faktiska butiker, designers eller nischmärken. Namn och upphovsrätt, använda eller oanvända, tillhör respektive tillverkare och/eller designers. Dessa är helt enkelt inspirationer och är inte \"identiska\" med någon annan doft eller original.</p><p>Tryscent-parfymer ska inte förväxlas med original och vi har ingen anknytning till tillverkarna av dessa namnlösa designermärken. Alla \"varumärken\", använda eller oanvända, tillhör sina respektive ägare. Vi är inte godkända av, direkt anslutna till, underhållna, auktoriserade eller sponsrade av någon varumärkesinnehavare som refereras till eller inte refereras till häri.</p><p>Användningen av något produktnamn är endast i identifierings- och referenssyfte och innebär inte någon koppling till varumärkesinnehavaren.</p>",
             "page": ""
           }
         },
@@ -191,7 +229,11 @@
         "money_back_eKXfnE",
         "people_purchased_cYxaYJ",
         "cta_review_g7n3R8",
-        "collapsible_tab_W8RYmF",
+        "collapsible_tab_XYmgtQ",
+        "collapsible_tab_Xzzjc7",
+        "collapsible_tab_PtUaDN",
+        "collapsible_tab_gkD4Ei",
+        "collapsible_tab_pdYPYn",
         "collapsible_tab_ydfzCq",
         "share"
       ],
