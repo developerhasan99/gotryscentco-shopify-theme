@@ -164,36 +164,6 @@
           "type": "expanded_notes",
           "settings": {}
         },
-        "collapsible_tab_XYmgtQ": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Beskrivning",
-            "icon": "clipboard",
-            "content": "{{ product.description }}",
-            "page": ""
-          }
-        },
-        "collapsible_tab_PtUaDN": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Scent Notes",
-            "icon": "perfume",
-            "content": "{{ product.metafields.custom.scent_profile | metafield_tag }}",
-            "page": ""
-          }
-        },
-        "collapsible_tab_tUEYBx": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Varför är era parfymer så prisvärda?",
-            "icon": "perfume",
-            "content": "<p>Våra parfymer är prisvärda eftersom vi fokuserar på det som verkligen betyder något – själva doften – och eliminerar onödiga kostnader:</p><p>✔️ Ingen dyr reklam – Vi investerar inte i kampanjer med kändisar eller lyxig varumärkesprofilering, vilket gör att vi kan erbjuda lägre priser.&nbsp;</p><p>✔️ Enkel, elegant förpackning – Istället för kostsamma designflaskor använder vi minimalistiska, stilrena förpackningar som håller produktionskostnaderna nere.</p><p>✔️ Direktförsäljningsmodell – Genom att sälja online och tappa upp parfymerna själva undviker vi mellanhänder och återförsäljarnas påslag.</p><p>✔️ Unika kompositioner, förstklassig kvalitet. Resultatet? Du får långvariga parfymer av hög kvalitet till ett rimligt pris.</p>",
-            "page": ""
-          }
-        },
         "collapsible_tab_pCrhqV": {
           "type": "collapsible_tab",
           "settings": {
@@ -209,26 +179,6 @@
             "heading": "Vad betyder 19-21% parfym?",
             "icon": "perfume",
             "content": "<p>Procentandelen anger koncentrationen av rena doftoljor i produkten. I vårt fall betyder 19-21 % parfymkoncentration:</p><p>✔️ Den klassificeras som Eau de Parfum (EDP) — en av de mest intensiva parfymtyperna som finns för dagligt bruk.</p><p>✔️ Högt innehåll av doftoljor säkerställer utmärkt hållbarhet — doften håller sig märkbar på huden i många timmar, ofta till nästa dag.</p><p>✔️ Stark projektion och djup — doften vecklas ut i lager och bibehåller en rik, bestående karaktär. Som jämförelse: 5-15 % doftoljor. 15-25 %, så våra parfymer ligger i den övre delen av denna kategori. 25 %, men är ofta mycket dyrare. Kort sagt: Med 19-21 % får du en intensiv, långvarig och högkvalitativ doftupplevelse — perfekt för alla som vill ha designerliknande prestanda till ett överkomligt pris.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_gkD4Ei": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Is the inspired fragrance different?",
-            "icon": "perfume",
-            "content": "<p>No — our inspired fragrances are designed as an&nbsp;<strong>exact copy</strong>&nbsp;of the originals from famous luxury brands. We carefully recreate the same fragrance structure, using identical scent notes and raw materials wherever possible.</p><p>✔️&nbsp;<strong>1:1 fragrance impression</strong>&nbsp;– The scent is virtually indistinguishable from the original, even for experienced perfume lovers.<br/><br/>✔️&nbsp;<strong>Same longevity and projection</strong>&nbsp;– Thanks to the high concentration of perfume oils (19-21%), our fragrances last just as long as the originals.<br/><br/>✔️&nbsp;<strong>Affordable price, no compromise</strong>&nbsp;– You get the exact same olfactory experience without paying for the logo, marketing, or designer packaging.</p><p>In short: Our perfumes are identical to luxury brands in scent, quality, and durability — the only difference is the price.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_pdYPYn": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Vad betyder att en parfym har en koncentration på 19–21 %?",
-            "icon": "perfume",
-            "content": "<p>Procenttalet anger koncentrationen av rena doftoljor i produkten. I vårt fall innebär en parfymkoncentration på 19–21 % följande:</p><p>✔️ Den klassificeras som Eau de Parfum (EDP) – en av de mest intensiva parfymtyperna som finns för daglig användning.</p><p>✔️ Det höga innehållet av doftolja garanterar utmärkt hållbarhet – doften kvarstår på huden i många timmar, ofta ända till nästa dag.</p><p>✔️ Stark spridning och djup – doften utvecklas i lager och behåller en rik, bestående karaktär. Som jämförelse: 5–15 % doftoljor. 15–25 %, så våra parfymer ligger i den övre delen av denna kategori. 25 %, men är ofta betydligt dyrare.&nbsp;</p><p>Kort sagt: Med 19–21 % får du en intensiv, långvarig och högkvalitativ doftupplevelse – perfekt för alla som vill ha en prestanda i designerklass till ett överkomligt pris.</p>",
             "page": ""
           }
         },
@@ -274,13 +224,8 @@
         "people_purchased_cYxaYJ",
         "cta_review_g7n3R8",
         "expanded_notes_HrkwnP",
-        "collapsible_tab_XYmgtQ",
-        "collapsible_tab_PtUaDN",
-        "collapsible_tab_tUEYBx",
         "collapsible_tab_pCrhqV",
         "collapsible_tab_nhKiAc",
-        "collapsible_tab_gkD4Ei",
-        "collapsible_tab_pdYPYn",
         "collapsible_tab_ydfzCq",
         "share"
       ],
