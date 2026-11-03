@@ -20,6 +20,8 @@
           role="group"
           aria-labelledby="predictive-search-queries">
           {%- for query in predictive_search.resources.queries -%}
+              {% assign query_text = query.text | downcase %}
+              {% unless query_text contains 'mystery beauty surprise' %}
             <li
               id="predictive-search-option-query-{{ forloop.index }}"
               class="predictive-search__list-item"
@@ -36,6 +38,7 @@
                 </div>
               </a>
             </li>
+              {% endunless %}
           {%- endfor -%}
           {%- for collection in predictive_search.resources.collections -%}
             <li
