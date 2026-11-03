@@ -270,7 +270,7 @@
                   {% if item.object_type != 'product' %}
                     {% continue %}
                   {% endif %}
-                  {% if item.handle == 'gratis-mystikk-parfum-3ml' or item.tags contains 'Bundle_Price_Show' %}
+                  {% if item.handle == 'gratis-mystikk-parfum-3ml' or item.tags contains 'Bundle_Price_Show' or item.tags contains 'Bundle_no_show'%}
                     {% continue %}
                   {% endif %}
                   {% assign lazy_load = false %}
