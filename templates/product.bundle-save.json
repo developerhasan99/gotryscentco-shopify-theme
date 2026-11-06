@@ -1,0 +1,215 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pm_bundle_save": {
+      "type": "pm-bundle-save",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "drop",
+            "text": "20% parfymolja (Eau de Parfum)"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "clock",
+            "text": "Håller 12+ timmar på huden"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "text": "Inga hårda kemikalier"
+          }
+        },
+        "t3": {
+          "type": "tier",
+          "settings": {
+            "bottles": 3,
+            "max_bottles": 3,
+            "label": "3 flaskor",
+            "tag": "Dag, kväll och helg",
+            "preselected": false
+          }
+        },
+        "t4": {
+          "type": "tier",
+          "settings": {
+            "bottles": 4,
+            "max_bottles": 4,
+            "label": "4 flaskor",
+            "tag": "En för varje tillfälle",
+            "preselected": false
+          }
+        },
+        "t5": {
+          "type": "tier",
+          "settings": {
+            "bottles": 5,
+            "max_bottles": 5,
+            "label": "5 flaskor",
+            "tag": "En för varje vardag",
+            "preselected": false
+          }
+        },
+        "t6": {
+          "type": "tier",
+          "settings": {
+            "bottles": 6,
+            "max_bottles": 20,
+            "label": "6+ flaskor",
+            "tag": "Mest populär",
+            "preselected": true
+          }
+        },
+        "l_men": {
+          "type": "line",
+          "settings": {
+            "group": "men",
+            "label": "Herr",
+            "preselected": false
+          }
+        },
+        "l_women": {
+          "type": "line",
+          "settings": {
+            "group": "women",
+            "label": "Dam",
+            "preselected": false
+          }
+        },
+        "l_unisex": {
+          "type": "line",
+          "settings": {
+            "group": "unisex",
+            "label": "Unisex",
+            "preselected": false
+          }
+        },
+        "mr1": {
+          "type": "mini_review",
+          "settings": {
+            "quote": "Jag är såååå nöjd med allt, dofterna är fantastiska och väldigt lika originalen. De håller riktigt länge!",
+            "name": "Lena A.",
+            "verified": true
+          }
+        },
+        "mr2": {
+          "type": "mini_review",
+          "settings": {
+            "quote": "Jag har köpt parfym till både mig själv och min fru och de luktar riktigt gott. Precis som de dofter de är inspirerade av. Rekommenderas.",
+            "name": "Mattias E.",
+            "verified": true
+          }
+        },
+        "mr3": {
+          "type": "mini_review",
+          "settings": {
+            "quote": "Doften överraskade mig verkligen, den är helt enastående! Jag älskar den, och förpackningen är också väldigt elegant.",
+            "name": "Silvana R.",
+            "verified": true
+          }
+        },
+        "mf1": {
+          "type": "mini_faq",
+          "settings": {
+            "question": "Hur länge håller doften?",
+            "answer": "<p>Över 12 timmar för de flesta. Hur länge den sitter beror på din hud, så spraya på huden och inte på kläderna.</p>"
+          }
+        },
+        "mf2": {
+          "type": "mini_faq",
+          "settings": {
+            "question": "Kan jag blanda olika dofter?",
+            "answer": "<p>Ja. Välj vilka dofter du vill, i vilken kombination du vill. Samma doft kan du lägga till flera gånger.</p>"
+          }
+        },
+        "mf3": {
+          "type": "mini_faq",
+          "settings": {
+            "question": "Vad händer om doften inte passar mig?",
+            "answer": "<p>Du har 60 dagars pengarna-tillbaka-garanti. Är doften inte rätt för dig skickar du tillbaka beställningen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "l_men",
+        "l_women",
+        "l_unisex",
+        "mr1",
+        "mr2",
+        "mr3",
+        "mf1",
+        "mf2",
+        "mf3"
+      ],
+      "settings": {
+        "bundle_handle": "bundle-and-save",
+        "bottle_size": "50ml",
+        "pricing_mode": "bundle_product",
+        "bottle_property": "Bottle",
+        "color_scheme": "scheme-1",
+        "show_rating": true,
+        "rating_text": "Över 10 000 verifierade doftälskare",
+        "headline": "Köp fler, <em>spara mer</em>",
+        "subheading": "Sätt ihop ditt eget paket med favoritdofter och spara upp till [max]%",
+        "show_timer": true,
+        "timer_label": "Erbjudandet går ut om",
+        "timer_eyebrow": "Black Month · upp till [max]% rabatt · bara idag",
+        "timer_title": "Rea i 24 timmar",
+        "timer_hrs_label": "tim",
+        "timer_mins_label": "min",
+        "timer_secs_label": "sek",
+        "tiers_heading": "Välj storlek på paketet",
+        "saving_badge": "-[pct]%",
+        "per_bottle_text": "[price] / flaska",
+        "stack_text": "Bara [price] per extra flaska",
+        "scents_heading": "Välj dina [n] dofter",
+        "counter_text": "[x] av [n] valda",
+        "max_text": "Paketet är fullt: [max] flaskor",
+        "search_placeholder": "Sök på märke, tillfälle eller doftfamilj",
+        "lines_heading": "Filtrera dofter",
+        "all_label": "Alla",
+        "search_empty": "Inga dofter matchar din sökning",
+        "search_clear": "Rensa sökning",
+        "empty_text": "Inga dofter i den här gruppen.",
+        "add_label": "Lägg till",
+        "inspired_prefix": "Inspirerad av",
+        "badge_bestseller": "Bästsäljare",
+        "badge_new": "Nyhet",
+        "scroll_hint": "Scrolla för att se fler dofter",
+        "cta_empty": "Välj dina dofter",
+        "cta_more": "Välj [n] till för att fylla ditt paket",
+        "cta_label": "Lägg i varukorgen",
+        "cta_adding": "Lägger i varukorgen...",
+        "error_text": "Något gick fel. Försök igen.",
+        "show_payment_icons": true,
+        "review_interval": 5,
+        "verified_label": "Verifierat köp",
+        "guarantee_heading": "Prova i 60 dagar, riskfritt.",
+        "guarantee_text": "<p>60 dagars pengarna-tillbaka-garanti. Är doften inte rätt för dig skickar du tillbaka beställningen.</p>"
+      }
+    }
+  },
+  "order": [
+    "pm_bundle_save"
+  ]
+}
