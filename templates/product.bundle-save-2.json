@@ -81,7 +81,9 @@
         "atc_bundle_builder_aLJUaV": {
           "type": "atc_bundle_builder",
           "settings": {
-            "collection_handles": "top-sellers:Bestsellers,new"
+            "collection_handles": "top-sellers:Bestsellers,new",
+            "skip_atc_button": true,
+            "open_checkout": false
           }
         },
         "tsr_block_wBLHK7": {
@@ -229,6 +231,7 @@
         "collapsible_tab_ydfzCq",
         "share"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "enable_sticky_info": true,
@@ -246,18 +249,161 @@
         "padding_bottom": 72
       }
     },
-    "you_may_like_YAVKzE": {
-      "type": "you-may-like",
-      "name": "You May Like",
+    "pm_bundle_save_tTdNMp": {
+      "type": "pm-bundle-save",
+      "blocks": {
+        "benefit_Apg7my": {
+          "type": "benefit",
+          "settings": {
+            "icon": "drop",
+            "text": "20% parfymolja (Eau de Parfum)"
+          }
+        },
+        "benefit_qTBgA9": {
+          "type": "benefit",
+          "settings": {
+            "icon": "clock",
+            "text": "Håller 12+ timmar på huden"
+          }
+        },
+        "benefit_nHeUrz": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "text": "Inga hårda kemikalier"
+          }
+        },
+        "tier_7UBLdq": {
+          "type": "tier",
+          "settings": {
+            "bottles": 2,
+            "max_bottles": 2,
+            "label": "2 flaskor",
+            "tag": "Dag och kväll",
+            "badge_override": "",
+            "preselected": false
+          }
+        },
+        "tier_jXnfYX": {
+          "type": "tier",
+          "settings": {
+            "bottles": 4,
+            "max_bottles": 4,
+            "label": "4 flaskor",
+            "tag": "En för varje tillfälle",
+            "badge_override": "",
+            "preselected": false
+          }
+        },
+        "tier_T9m9kH": {
+          "type": "tier",
+          "settings": {
+            "bottles": 6,
+            "max_bottles": 6,
+            "label": "6 flaskor",
+            "tag": "Mest populär",
+            "badge_override": "",
+            "preselected": true
+          }
+        },
+        "tier_ttFNj3": {
+          "type": "tier",
+          "settings": {
+            "bottles": 8,
+            "max_bottles": 20,
+            "label": "8+ flaskor",
+            "tag": "För samlaren",
+            "badge_override": "",
+            "preselected": false
+          }
+        },
+        "line_q7bnnG": {
+          "type": "line",
+          "settings": {
+            "group": "men",
+            "label": "Herr",
+            "preselected": false
+          }
+        },
+        "line_AMmCQi": {
+          "type": "line",
+          "settings": {
+            "group": "women",
+            "label": "Dam",
+            "preselected": false
+          }
+        },
+        "line_PbUaiX": {
+          "type": "line",
+          "settings": {
+            "group": "unisex",
+            "label": "Unisex",
+            "preselected": false
+          }
+        }
+      },
+      "block_order": [
+        "benefit_Apg7my",
+        "benefit_qTBgA9",
+        "benefit_nHeUrz",
+        "tier_7UBLdq",
+        "tier_jXnfYX",
+        "tier_T9m9kH",
+        "tier_ttFNj3",
+        "line_q7bnnG",
+        "line_AMmCQi",
+        "line_PbUaiX"
+      ],
+      "name": "Bundle & Save",
       "settings": {
-        "background_color": "#fcfbf9",
-        "title": "Du kanske också gillar",
-        "description": "",
-        "collection": "best-sellers",
-        "button_text": "View All",
-        "button_link": "shopify://collections/all",
-        "padding_top": 0,
-        "padding_bottom": 36
+        "bundle_handle": "bundle-and-save",
+        "bundle_product": "",
+        "collection": "",
+        "bottle_size": "50ml",
+        "pricing_mode": "bundle_product",
+        "single_price": "",
+        "bottle_property": "Bottle",
+        "color_scheme": "",
+        "show_rating": true,
+        "rating_text": "Över 10 000 verifierade doftälskare",
+        "rating_link": "",
+        "headline": "Köp fler, <em>spara mer</em>",
+        "subheading": "Sätt ihop ditt eget paket med favoritdofter och spara upp till [max]%",
+        "show_timer": true,
+        "timer_label": "Erbjudandet går ut om",
+        "timer_eyebrow": "Black Month · upp till [max]% rabatt · bara idag",
+        "timer_title": "Rea i 24 timmar",
+        "timer_hrs_label": "tim",
+        "timer_mins_label": "min",
+        "timer_secs_label": "sek",
+        "tiers_heading": "Välj storlek på paketet",
+        "saving_badge": "-[pct]%",
+        "per_bottle_text": "[price] / flaska",
+        "stack_text": "Bara [price] per extra flaska",
+        "scents_heading": "Välj dina [n] dofter",
+        "counter_text": "[x] av [n] valda",
+        "max_text": "Paketet är fullt: [max] flaskor",
+        "search_placeholder": "Sök på märke, tillfälle eller doftfamilj",
+        "lines_heading": "Filtrera dofter",
+        "all_label": "Alla",
+        "search_empty": "Inga dofter matchar din sökning",
+        "search_clear": "Rensa sökning",
+        "empty_text": "Inga dofter i den här gruppen.",
+        "add_label": "Lägg till",
+        "inspired_prefix": "Inspirerad av",
+        "badge_bestseller": "Bästsäljare",
+        "badge_new": "Nyhet",
+        "scroll_hint": "Scrolla för att se fler dofter",
+        "cta_empty": "Välj dina dofter",
+        "cta_more": "Välj [n] till för att fylla ditt paket",
+        "cta_label": "Lägg i varukorgen",
+        "cta_adding": "Lägger i varukorgen...",
+        "error_text": "Något gick fel. Försök igen.",
+        "show_payment_icons": true,
+        "review_interval": 5,
+        "verified_label": "Verifierat köp",
+        "guarantee_heading": "60 dagars pengarna-tillbaka-garanti",
+        "guarantee_text": "<p>Prova i 60 dagar, riskfritt. Är doften inte rätt för dig skickar du tillbaka beställningen.</p>"
       }
     },
     "feature_highlights_QPVALL": {
@@ -307,15 +453,6 @@
         "background_color": "#ffffff",
         "padding_top": 32,
         "padding_bottom": 32
-      }
-    },
-    "scent_breakdown_rG4H3T": {
-      "type": "scent-breakdown",
-      "name": "Scent Breakdown",
-      "settings": {
-        "background_color": "#faf9f6",
-        "padding_top": 72,
-        "padding_bottom": 40
       }
     },
     "stacks_up_xtpACd": {
@@ -941,6 +1078,7 @@
     },
     "cupid-images-slider": {
       "type": "cupid-images-slider",
+      "disabled": true,
       "settings": {
         "padding_top": 72,
         "padding_bottom": 72,
@@ -961,9 +1099,8 @@
   },
   "order": [
     "main",
-    "you_may_like_YAVKzE",
+    "pm_bundle_save_tTdNMp",
     "feature_highlights_QPVALL",
-    "scent_breakdown_rG4H3T",
     "stacks_up_xtpACd",
     "image_and_text_UBpNnL",
     "image_and_text_RDUKE4",
