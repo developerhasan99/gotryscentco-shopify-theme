@@ -40,6 +40,7 @@
             "max_bottles": 3,
             "label": "3 flaskor",
             "tag": "Dag, kväll och helg",
+            "badge_override": "",
             "preselected": false
           }
         },
@@ -50,6 +51,7 @@
             "max_bottles": 4,
             "label": "4 flaskor",
             "tag": "En för varje tillfälle",
+            "badge_override": "",
             "preselected": false
           }
         },
@@ -60,6 +62,7 @@
             "max_bottles": 5,
             "label": "5 flaskor",
             "tag": "En för varje vardag",
+            "badge_override": "",
             "preselected": false
           }
         },
@@ -70,6 +73,7 @@
             "max_bottles": 20,
             "label": "6+ flaskor",
             "tag": "Mest populär",
+            "badge_override": "",
             "preselected": true
           }
         },
@@ -163,12 +167,16 @@
       ],
       "settings": {
         "bundle_handle": "bundle-and-save",
+        "bundle_product": "",
+        "collection": "",
         "bottle_size": "50ml",
         "pricing_mode": "bundle_product",
+        "single_price": "",
         "bottle_property": "Bottle",
         "color_scheme": "scheme-1",
         "show_rating": true,
         "rating_text": "Över 10 000 verifierade doftälskare",
+        "rating_link": "",
         "headline": "Köp fler, <em>spara mer</em>",
         "subheading": "Sätt ihop ditt eget paket med favoritdofter och spara upp till [max]%",
         "show_timer": true,
@@ -817,6 +825,7 @@
     },
     "cupid-images-slider": {
       "type": "cupid-images-slider",
+      "disabled": true,
       "settings": {
         "padding_top": 72,
         "padding_bottom": 72,
