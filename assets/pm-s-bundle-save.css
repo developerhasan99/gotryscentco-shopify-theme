@@ -806,6 +806,10 @@
   color: var(--pm-ink);
 }
 
+.premium .pm-bs-row__insp .pm-dthumb__img {
+  filter: blur(3px);
+}
+
 .premium .pm-bs-row__tags {
   display: flex;
   flex-wrap: wrap;
