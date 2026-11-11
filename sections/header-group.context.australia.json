@@ -17,7 +17,7 @@
       "settings": {
         "prepend_text": "Tidlig Black Friday",
         "append_text": "Køb 4, betal for 3!",
-        "link": "shopify://collections/best-sellers",
+        "link": "",
         "top_banner_text": ""
       },
       "blocks": {}

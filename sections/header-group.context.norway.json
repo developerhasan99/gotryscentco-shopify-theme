@@ -17,7 +17,7 @@
       "settings": {
         "prepend_text": "Vårt største salg:",
         "append_text": "50 % rabatt",
-        "link": "shopify://collections/best-sellers"
+        "link": ""
       },
       "blocks": {}
     }

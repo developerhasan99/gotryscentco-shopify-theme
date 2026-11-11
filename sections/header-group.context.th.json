@@ -17,7 +17,7 @@
       "settings": {
         "prepend_text": "Suuri Black Friday -ennakko",
         "append_text": "Joka 3. pullo ilmaiseksi",
-        "link": "shopify://collections/best-sellers",
+        "link": "",
         "top_banner_text": ""
       },
       "blocks": {}
