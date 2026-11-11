@@ -15,9 +15,10 @@
   "sections": {
     "offer_timebar_39KLTc": {
       "settings": {
-        "prepend_text": "Suurin Alemme:",
-        "append_text": "50 % alennus",
-        "link": "shopify://collections/best-sellers"
+        "prepend_text": "Suuri Black Friday -ennakko",
+        "append_text": "Joka 3. pullo ilmaiseksi",
+        "link": "shopify://collections/best-sellers",
+        "top_banner_text": ""
       },
       "blocks": {}
     }
