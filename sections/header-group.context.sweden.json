@@ -16,10 +16,12 @@
     "offer_timebar_39KLTc": {
       "disabled": false,
       "settings": {
-        "prepend_text": "Tidig Black Friday",
-        "append_text": "Var 3:e flaska gratis",
-        "link": "shopify://collections/best-sellers",
-        "top_banner_text": ""
+        "prepend_text": "🎁 Black Friday:",
+        "append_text": "Köp 2 få 1 gratis!",
+        "link": "",
+        "top_banner_text": "",
+        "countdown_date": "",
+        "fuel04_line": ""
       },
       "blocks": {}
     }

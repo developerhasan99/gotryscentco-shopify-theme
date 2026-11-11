@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "finland"
+  },
+  "parent": "header-group.json",
+  "sections": {
+    "offer_timebar_39KLTc": {
+      "settings": {
+        "top_banner_text": "",
+        "prepend_text": "🎁 Black Friday:",
+        "countdown_date": "",
+        "append_text": "Osta 2, saat 1 ilmaiseksi!",
+        "link": "",
+        "fuel04_line": ""
+      }
+    }
+  }
+}
