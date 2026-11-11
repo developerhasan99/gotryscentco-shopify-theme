@@ -16,9 +16,10 @@
     "offer_timebar_39KLTc": {
       "disabled": false,
       "settings": {
-        "prepend_text": "Halloween-rea!",
-        "append_text": "30% RABATT PÅ HELA VARUKORGEN",
-        "link": "shopify://collections/best-sellers"
+        "prepend_text": "Tidig Black Friday",
+        "append_text": "Var 3:e flaska gratis",
+        "link": "shopify://collections/best-sellers",
+        "top_banner_text": ""
       },
       "blocks": {}
     }
