@@ -78,10 +78,19 @@
             "show_gift_card_recipient": true
           }
         },
+        "custom_liquid_dMgbgX": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "% render 'quantity-breaker' %}"
+          }
+        },
         "atc_bundle_builder_aLJUaV": {
           "type": "atc_bundle_builder",
+          "disabled": true,
           "settings": {
-            "collection_handles": "top-sellers:Bestsellers,new"
+            "collection_handles": "top-sellers:Bestsellers,new",
+            "skip_atc_button": true,
+            "open_checkout": false
           }
         },
         "tsr_block_wBLHK7": {
@@ -211,6 +220,7 @@
         "price",
         "quantity_selector",
         "buy_buttons",
+        "custom_liquid_dMgbgX",
         "atc_bundle_builder_aLJUaV",
         "tsr_block_wBLHK7",
         "videos_Mhak3R",
