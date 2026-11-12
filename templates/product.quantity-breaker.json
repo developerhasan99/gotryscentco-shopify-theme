@@ -81,7 +81,7 @@
         "custom_liquid_dMgbgX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "% render 'quantity-breaker' %}"
+            "custom_liquid": "{% render 'quantity-breaker' %}"
           }
         },
         "atc_bundle_builder_aLJUaV": {
