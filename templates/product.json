@@ -81,13 +81,15 @@
         "atc_bundle_builder_aLJUaV": {
           "type": "atc_bundle_builder",
           "settings": {
-            "collection_handles": "top-sellers:Bestsellers,new"
+            "collection_handles": "top-sellers:Bestsellers,new",
+            "skip_atc_button": true,
+            "open_checkout": false
           }
         },
         "tsr_block_wBLHK7": {
           "type": "tsr_block",
           "settings": {
-            "product": "6x-50ml-perfume-bottles"
+            "product": "bundle-and-save"
           }
         },
         "videos_Mhak3R": {
