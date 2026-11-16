@@ -278,11 +278,18 @@
                       <h3 class="mt-2 mb-1 tracking-normal font-semibold leading-snug text-slate-900 text-sm sm:text-base md:text-lg">
                         {{ 'bundle.tsr_offer_heading' | t }}
                       </h3>
-                      <p class="m-0 tracking-normal text-slate-600 text-sm md:text-base">
-                        {{ 'bundle.tsr_offer_price_prefix' | t }}
-                        <strong class="text-slate-900">{{ block.settings.product.price | divided_by: block.settings.product.metafields.custom.choose_your_fragrances_options | money }}</strong>
-                        {{ 'bundle.tsr_offer_price_suffix' | t }}
-                      </p>
+                      {% assign tsr_bundle_size = block.settings.product.metafields.custom.choose_your_fragrances_options.value | default: 0 | plus: 0 %}
+
+              <p class="m-0 tracking-normal text-slate-600 text-sm md:text-base">
+               {{ 'bundle.tsr_offer_price_prefix' | t }}
+               <strong class="text-slate-900">
+             {% if tsr_bundle_size > 0 %}
+             {{ block.settings.product.price | divided_by: tsr_bundle_size | money }}
+        {% else %}
+         {{ block.settings.product.price | money }}
+    {% endif %}
+     </strong>
+  {{ 'bundle.tsr_offer_price_suffix' | t }}</p>
                     </div>
                   </a>
                 {% endif %}
