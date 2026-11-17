@@ -3651,3 +3651,16 @@ details-disclosure > details {
     font-weight: 500;
 }
 
+
+/* Multi-option variant picker: sold-out option values */
+#variant-selector .option-button[aria-disabled='true'] {
+  opacity: 0.45;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* Product-page size/option buttons (reactive-variant-selector): 20% shorter than the old pt-4 pb-3 */
+#variant-selector .rvs-size-btn {
+  padding-top: 8px;
+  padding-bottom: 6px;
+}

@@ -135,7 +135,79 @@
   x-data
   x-effect="$store.qb.currentPrice; $store.qb.currentCompare; $store.qb.syncGlobalPrices()">
 
-  {% if product.variants.size > 1 %}
+  {% if product.options.size > 1 %}
+    {% comment %} Multi-option picker: one row of buttons per option (e.g. size + concentration) {% endcomment %}
+    <div id="variant-selector">
+      {% for option in product.options_with_values %}
+        {% liquid
+          assign option_index = forloop.index0
+          assign option_name_down = option.name | downcase
+          assign first_value_down = option.values.first | downcase
+          assign option_kind = 'other'
+          assign option_heading = 'Välj ' | append: option_name_down
+          assign option_values = option.values
+          if option_name_down contains 'storlek' or option_name_down contains 'size' or option_name_down contains 'volym' or option_name_down contains 'pojemno' or option_name_down contains 'größe' or first_value_down contains 'ml'
+            assign option_kind = 'size'
+            assign option_heading = 'Välj storlek'
+            unless largest_first
+              assign option_values = option.values | reverse
+            endunless
+          endif
+        %}
+        <div class="flex justify-between items-center mb-3 !mt-6">
+          <h2 class="m-0 text-sm md:text-base font-semibold">
+            {{ option_heading }}:
+          </h2>
+          {% if option_kind == 'size' %}
+            <div class="text-xs md:text-sm italic text-gray-500">
+              80 % av våra kunder köper 50 ml eller mer
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          {% for value in option_values %}
+            {% liquid
+              assign value_available = false
+              for variant in product.variants
+                if variant.options[option_index] == value and variant.available
+                  assign value_available = true
+                  break
+                endif
+              endfor
+            %}
+            <button
+              type="button"
+              @click="$store.qb.selectOption({{ option_index }}, $el.dataset.value)"
+              class="option-button rounded-lg px-3 py-2.5 bg-white border-2 border-solid cursor-pointer relative"
+              :class="$store.qb.unit.options[{{ option_index }}] === $el.dataset.value ? 'mgx-selected' : 'border-gray-200'"
+              :aria-pressed="$store.qb.unit.options[{{ option_index }}] === $el.dataset.value ? 'true' : 'false'"
+              data-option-index="{{ option_index }}"
+              data-value="{{ value | escape }}"
+              {% unless value_available %}
+                aria-disabled="true" title="{{ 'products.product.sold_out' | t | escape }}"
+              {% endunless %}>
+              <div class="text-center leading-tight">
+                <div class="text-sm font-semibold">{{ value }}</div>
+              </div>
+              {% if option_kind == 'size' %}
+                {% if value contains '50' %}
+                  <span class="text-[10px] italic text-white rounded absolute -top-[10px] left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5 whitespace-nowrap">
+                    Mest Populär
+                  </span>
+                {% endif %}
+                {% if value contains '100' %}
+                  <span class="text-[10px] italic text-white rounded absolute -top-[10px] left-1/2 [transform:translateX(-50%)] bg-[#22613a] px-2 py-0.5 whitespace-nowrap">
+                    Bäst värde
+                  </span>
+                {% endif %}
+              {% endif %}
+            </button>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  {% elsif product.variants.size > 1 %}
     <div class="flex justify-between items-center mb-3 !mt-6">
       <h2 class="m-0 text-sm md:text-base font-semibold">
         Välj storlek:
@@ -648,6 +720,8 @@
           "{{ variant.title | downcase | remove: ' ' }}": {
             id: {{ variant.id }},
             label: "{{ variant.title }}",
+            options: {{ variant.options | json }},
+            available: {{ variant.available }},
             price: {{ variant.price }},
             compare: {{ variant.compare_at_price | default: 0 }}
           },
@@ -817,13 +891,51 @@
           input.value = this.variants[key].id;
         }
 
-        this.picks = this.picks.map(function (p) {
-          if (!p || !p.variants[key]) return p;
+        var self = this;
 
-          return p.variants[key].available ?
-            Object.assign({}, p, { variant: p.variants[key] }) :
+        this.picks = this.picks.map(function (p) {
+          var v = p && self.matchVariant(p);
+          if (!v) return p;
+
+          return v.available ?
+            Object.assign({}, p, { variant: v }) :
             null;
         });
+      },
+
+      // Multi-option products: keep the other options, else the first in-stock variant with the clicked value
+      selectOption: function (index, value) {
+        var variants = this.variants;
+        var wanted = ((this.unit || {}).options || []).slice();
+        wanted[index] = value;
+
+        var keys = Object.keys(variants);
+        var matchKey = keys.find(function (k) {
+          return variants[k].available && variants[k].options.every(function (o, i) {
+            return o === wanted[i];
+          });
+        }) || keys.find(function (k) {
+          return variants[k].available && variants[k].options[index] === value;
+        });
+
+        if (matchKey) this.selectSize(matchKey);
+      },
+
+      // Bonus scents are often single-size ("100ml") while the main product is "100ml/20%".
+      // Assumes size is the first option: exact key, then the size part, then the first in-stock key with that size.
+      matchVariant: function (product) {
+        var vs = product.variants;
+        var key = this.selectedSize;
+        var size = key.split('/')[0];
+
+        if (vs[key]) return vs[key];
+        if (vs[size]) return vs[size];
+
+        var k = Object.keys(vs).find(function (k) {
+          return k.split('/')[0] === size && vs[k].available;
+        });
+
+        return k ? vs[k] : null;
       },
 
       selectTier: function (key) {
@@ -839,7 +951,7 @@
       },
 
       variantFor: function (product) {
-        return product.variants[this.selectedSize] ||
+        return this.matchVariant(product) ||
           Object.values(product.variants)[0];
       },
 

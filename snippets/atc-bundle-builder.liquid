@@ -9,7 +9,65 @@
   }
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-{% if product.variants.size > 1 %}
+{% if product.options.size > 1 %}
+  {% comment %} Multi-option picker: one row of buttons per option (e.g. size + concentration) {% endcomment %}
+  <div id="variant-selector" x-data>
+    {% for option in product.options_with_values %}
+      {% liquid
+        assign option_index = forloop.index0
+        assign option_name_down = option.name | downcase
+        assign first_value_down = option.values.first | downcase
+        assign option_kind = 'other'
+        assign option_heading = 'Välj ' | append: option_name_down
+        if option_name_down contains 'storlek' or option_name_down contains 'size' or option_name_down contains 'volym' or option_name_down contains 'pojemno' or option_name_down contains 'größe' or first_value_down contains 'ml'
+          assign option_kind = 'size'
+          assign option_heading = 'Välj Storlek'
+        endif
+      %}
+      <div class="flex justify-between items-center mb-3 !mt-6">
+        <h2 class="m-0 text-base font-semibold">{{ option_heading }}:</h2>
+        {% if option_kind == 'size' %}
+          <div class="text-sm italic text-gray-500">50 ml - vald av 8 av 10 kunder</div>
+        {% endif %}
+      </div>
+      <div class="grid grid-cols-4 gap-3">
+        {% for value in option.values %}
+          {% liquid
+            assign value_available = false
+            for variant in product.variants
+              if variant.options[option_index] == value and variant.available
+                assign value_available = true
+                break
+              endif
+            endfor
+          %}
+          <button
+            type="button"
+            class="option-button flex flex-col items-center gap-1 rounded-lg p-2 pt-3 bg-white border-2 border-solid border-gray-200 cursor-pointer font-['Figtree'] relative"
+            @click="$store.bundleBuilder.selectOption({{ option_index }}, $el.dataset.value)"
+            :class="$store.bundleBuilder.unit.options[{{ option_index }}] === $el.dataset.value ? 'border-green-700' : ''"
+            :aria-pressed="$store.bundleBuilder.unit.options[{{ option_index }}] === $el.dataset.value ? 'true' : 'false'"
+            data-option-index="{{ option_index }}"
+            data-value="{{ value | escape }}"
+            {% unless value_available %}
+              aria-disabled="true" title="{{ 'products.product.sold_out' | t | escape }}"
+            {% endunless %}>
+            <span class="text-sm font-semibold">{{ value }}</span>
+            {% if option_kind == 'size' %}
+              {% assign value_key = value | downcase | remove: ' ' %}
+              {% if value_key == '50ml' %}
+                <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5">Popular</span>
+              {% endif %}
+              {% if value_key == '100ml' %}
+                <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#22613a] px-2 py-0.5">Bestseller</span>
+              {% endif %}
+            {% endif %}
+          </button>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+{% elsif product.variants.size > 1 %}
   {% comment %} Variant Selector {% endcomment %}
   <div class="flex justify-between items-center mb-3 !mt-6">
     <h2 class="m-0 text-base font-semibold">Välj Storlek:</h2>
@@ -185,6 +243,9 @@
     const variantsObj = {
       {% for variant in product.variants %}
         "{{ variant.title }}": {
+          id: "{{ variant.id }}",
+          options: {{ variant.options | json }},
+          available: {{ variant.available }},
           originalPrice: "{{ variant.price | money }}",
           compareAtPrice: "{{ variant.compare_at_price | money }}"
         },
@@ -219,6 +280,30 @@
           },
         {% endfor %}
       ],
+      get unit() {
+        return variantsObj[this.selectedVariant] || Object.values(variantsObj)[0];
+      },
+      // Multi-option products: keep the other options, else the first in-stock variant with the clicked value
+      selectOption(index, value) {
+        const wanted = (this.unit.options || []).slice();
+        wanted[index] = value;
+        const titles = Object.keys(variantsObj);
+        const match = titles.find(t => variantsObj[t].available && variantsObj[t].options.every((o, i) => o === wanted[i]))
+          || titles.find(t => variantsObj[t].available && variantsObj[t].options[index] === value);
+        if (!match) return;
+        this.selectedVariant = match;
+        this.variantId = variantsObj[match].id;
+      },
+      // Bundle scents are often single-size ("100ML") while the main product is "100ml / 20%".
+      // Assumes size is the first option: exact title, then the size part, then the first title with that size.
+      matchVariant(product) {
+        const vs = product.variants;
+        if (vs[this.selectedVariant]) return vs[this.selectedVariant];
+        const norm = t => t.toLowerCase().replace(/\s/g, '').split('/')[0];
+        const size = norm(this.selectedVariant);
+        const title = Object.keys(vs).find(t => norm(t) === size);
+        return title ? vs[title] : null;
+      },
       get originalPrice() {
         return variantsObj[this.selectedVariant].originalPrice;
       },
@@ -248,9 +333,9 @@
         let checkoutURl = '/cart/';
         this.selectedProducts.forEach((product, index) => {
           if (index === 0) {
-            checkoutURl += `${product.variants[this.selectedVariant].id}:1`;
+            checkoutURl += `${(this.matchVariant(product) || Object.values(product.variants)[0]).id}:1`;
           } else {
-            checkoutURl += `,${product.variants[this.selectedVariant].id}:1`;
+            checkoutURl += `,${(this.matchVariant(product) || Object.values(product.variants)[0]).id}:1`;
           }
         });
 

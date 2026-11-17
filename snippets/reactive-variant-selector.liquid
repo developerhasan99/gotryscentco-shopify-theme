@@ -6,7 +6,7 @@
   for variant in product.variants
     assign variant_title_down = variant.title | downcase
 
-    if variant_title_down contains '100'
+    if variant_title_down contains '100' and variant.available
       assign selected_variant = variant
       break
     endif
@@ -17,7 +17,66 @@
   {% render 'sold-out-alternative'
     , product: product %}
   {% else %}
-  {% if product.variants.size > 1 and product.available %}
+  {% if product.options.size > 1 and product.available %}
+    {% comment %} Multi-option picker: one row of buttons per option (e.g. size + concentration) {% endcomment %}
+    <div id="variant-selector">
+      {% for option in product.options_with_values %}
+        {% liquid
+          assign option_index = forloop.index0
+          assign option_name_down = option.name | downcase
+          assign first_value_down = option.values.first | downcase
+          assign option_kind = 'other'
+          assign option_heading = 'Välj ' | append: option_name_down
+          if option_name_down contains 'storlek' or option_name_down contains 'size' or option_name_down contains 'volym' or option_name_down contains 'pojemno' or option_name_down contains 'größe' or first_value_down contains 'ml'
+            assign option_kind = 'size'
+            assign option_heading = 'Välj storlek'
+          endif
+        %}
+        <div class="flex justify-between items-center mb-3 !mt-6">
+          <h2 class="m-0 text-base font-semibold">{{ option_heading }}:</h2>
+          {% if option_kind == 'size' %}
+            <div class="text-sm italic text-gray-500">100 ml - vald av 8 av 10 kunder</div>
+          {% endif %}
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          {% for value in option.values %}
+            {% liquid
+              assign value_available = false
+              for variant in product.variants
+                if variant.options[option_index] == value and variant.available
+                  assign value_available = true
+                  break
+                endif
+              endfor
+              assign value_selected = false
+              if selected_variant.options[option_index] == value
+                assign value_selected = true
+              endif
+            %}
+            <button
+              type="button"
+              class="option-button rounded-lg px-2 rvs-size-btn bg-white border-2 border-solid cursor-pointer font-['Figtree'] relative {% if value_selected %}border-green-700{% else %}border-gray-200{% endif %}"
+              data-option-index="{{ option_index }}"
+              data-value="{{ value | escape }}"
+              aria-pressed="{{ value_selected }}"
+              {% unless value_available %}
+                aria-disabled="true" title="{{ 'products.product.sold_out' | t | escape }}"
+              {% endunless %}>
+              <div class="text-sm font-semibold">{{ value }}</div>
+              {% if option_kind == 'size' %}
+                {% if value contains '50' %}
+                  <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5 whitespace-nowrap">Mest Populär</span>
+                {% endif %}
+                {% if value contains '100' %}
+                  <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#22613a] px-2 py-0.5 whitespace-nowrap">Bäst värde</span>
+                {% endif %}
+              {% endif %}
+            </button>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  {% elsif product.variants.size > 1 and product.available %}
     {% comment %} Variant Selector {% endcomment %}
     <div class="flex justify-between items-center mb-3 !mt-6">
       <h2 class="m-0 text-base font-semibold">Välj storlek:</h2>
@@ -42,7 +101,7 @@
         %}
         <button
           type="button"
-          class="variant-button rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Figtree'] relative {% if variant.id == selected_variant.id %}border-green-700{% else %}border-gray-200{% endif %}"
+          class="variant-button rounded-lg px-2 rvs-size-btn bg-white border-2 border-solid cursor-pointer font-['Figtree'] relative {% if variant.id == selected_variant.id %}border-green-700{% else %}border-gray-200{% endif %}"
           data-variant-id="{{ variant.id }}"
           data-variant-ml="{{ variant_ml }}"
           data-variant-title="{{ variant.title }}"
@@ -148,6 +207,8 @@
       {% for variant in product.variants %}
         "{{ variant.id }}": {
           title: "{{ variant.title }}",
+          options: {{ variant.options | json }},
+          available: {{ variant.available }},
           originalPrice: "{{ variant.price | money }}",
           compareAtPrice: "{{ variant.compare_at_price | money }}",
           hasComparePrice: {% if variant.compare_at_price > variant.price %}true{% else %}false{% endif %},
@@ -162,6 +223,7 @@
 
     // DOM elements
     const variantButtons = document.querySelectorAll('.variant-button');
+    const optionButtons = document.querySelectorAll('#variant-selector .option-button');
     const variantIdInput = document.getElementById('product-variant-id');
     const priceContainer = document.getElementById('product-price');
     if (!priceContainer) return;
@@ -186,6 +248,13 @@
           button.classList.remove('border-green-700');
           button.classList.add('border-gray-200');
         }
+      });
+
+      optionButtons.forEach(button => {
+        const chosen = (variantData.options || [])[Number(button.dataset.optionIndex)] === button.dataset.value;
+        button.classList.toggle('border-green-700', chosen);
+        button.classList.toggle('border-gray-200', !chosen);
+        button.setAttribute('aria-pressed', chosen ? 'true' : 'false');
       });
 
       // Update price display
@@ -235,5 +304,16 @@
         updateVariant(variantId);
       });
     });
+
+    // Multi-option rows: keep the other options, fall back to any in-stock variant with the clicked value
+    optionButtons.forEach(button => button.addEventListener('click', function() {
+      const index = Number(this.dataset.optionIndex), value = this.dataset.value;
+      const wanted = ((variantsData[selectedVariantId] || {}).options || []).slice();
+      wanted[index] = value;
+      const ids = Object.keys(variantsData);
+      const match = ids.find(id => variantsData[id].available && variantsData[id].options.every((o, i) => o === wanted[i]))
+        || ids.find(id => variantsData[id].available && variantsData[id].options[index] === value);
+      if (match) updateVariant(match);
+    }));
   })();
 </script>
