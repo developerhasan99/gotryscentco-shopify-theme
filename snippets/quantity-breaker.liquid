@@ -146,6 +146,9 @@
           assign option_kind = 'other'
           assign option_heading = 'Välj ' | append: option_name_down
           assign option_values = option.values
+          if option_name_down contains 'koncentration' or option_name_down contains 'konzentration' or option_name_down contains 'concentration' or option_name_down contains 'zaperfumowanie' or option_name_down contains 'strength'
+            assign option_heading = 'Välj koncentration'
+          endif
           if option_name_down contains 'storlek' or option_name_down contains 'size' or option_name_down contains 'volym' or option_name_down contains 'pojemno' or option_name_down contains 'größe' or first_value_down contains 'ml'
             assign option_kind = 'size'
             assign option_heading = 'Välj storlek'
@@ -165,7 +168,7 @@
           {% endif %}
         </div>
 
-        <div class="grid grid-cols-3 gap-3">
+        <div class="grid gap-3" style="grid-template-columns: repeat({{ option.values.size }}, minmax(0, 1fr));">
           {% for value in option_values %}
             {% liquid
               assign value_available = false
@@ -189,6 +192,12 @@
               {% endunless %}>
               <div class="text-center leading-tight">
                 <div class="text-sm font-semibold">{{ value }}</div>
+                {% if option_kind == 'size' %}
+                  <div
+                    class="text-[11px] text-gray-500 mt-0.5"
+                    x-text="$store.qb.perMl({{ option_index }}, $el.closest('button').dataset.value)">
+                  </div>
+                {% endif %}
               </div>
               {% if option_kind == 'size' %}
                 {% if value contains '50' %}
@@ -919,6 +928,20 @@
         });
 
         if (matchKey) this.selectSize(matchKey);
+      },
+
+      // Per-ml price of a size value, with the other options as currently chosen
+      perMl: function (index, value) {
+        var variants = this.variants;
+        var wanted = ((this.unit || {}).options || []).slice();
+        wanted[index] = value;
+        var key = Object.keys(variants).find(function (k) {
+          return variants[k].options.every(function (o, i) {
+            return o === wanted[i];
+          });
+        });
+        var ml = parseFloat(value);
+        return key && ml ? this.money(variants[key].price / ml) + ' / ml' : '';
       },
 
       // Bonus scents are often single-size ("100ml") while the main product is "100ml/20%".

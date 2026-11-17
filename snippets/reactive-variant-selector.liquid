@@ -19,7 +19,7 @@
   {% else %}
   {% if product.options.size > 1 and product.available %}
     {% comment %} Multi-option picker: one row of buttons per option (e.g. size + concentration) {% endcomment %}
-    <div id="variant-selector">
+    <div id="variant-selector" class="mb-5">
       {% for option in product.options_with_values %}
         {% liquid
           assign option_index = forloop.index0
@@ -27,6 +27,9 @@
           assign first_value_down = option.values.first | downcase
           assign option_kind = 'other'
           assign option_heading = 'Välj ' | append: option_name_down
+          if option_name_down contains 'koncentration' or option_name_down contains 'konzentration' or option_name_down contains 'concentration' or option_name_down contains 'zaperfumowanie' or option_name_down contains 'strength'
+            assign option_heading = 'Välj koncentration'
+          endif
           if option_name_down contains 'storlek' or option_name_down contains 'size' or option_name_down contains 'volym' or option_name_down contains 'pojemno' or option_name_down contains 'größe' or first_value_down contains 'ml'
             assign option_kind = 'size'
             assign option_heading = 'Välj storlek'
@@ -38,7 +41,7 @@
             <div class="text-sm italic text-gray-500">100 ml - vald av 8 av 10 kunder</div>
           {% endif %}
         </div>
-        <div class="grid grid-cols-3 gap-3">
+        <div class="grid gap-3" style="grid-template-columns: repeat({{ option.values.size }}, minmax(0, 1fr));">
           {% for value in option.values %}
             {% liquid
               assign value_available = false
@@ -64,6 +67,7 @@
               {% endunless %}>
               <div class="text-sm font-semibold">{{ value }}</div>
               {% if option_kind == 'size' %}
+                <div class="text-xs text-gray-500 option-per-ml">&nbsp;</div>
                 {% if value contains '50' %}
                   <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5 whitespace-nowrap">Mest Populär</span>
                 {% endif %}
@@ -208,6 +212,16 @@
         "{{ variant.id }}": {
           title: "{{ variant.title }}",
           options: {{ variant.options | json }},
+          {%- liquid
+            assign variant_ml = 0
+            for opt in variant.options
+              assign opt_down = opt | downcase
+              if opt_down contains 'ml'
+                assign variant_ml = opt_down | remove: 'ml' | strip | times: 1
+              endif
+            endfor
+          -%}
+          perMl: {% if variant_ml > 0 %}{{ variant.price | times: 1.0 | divided_by: variant_ml | money | append: ' / ml' | json }}{% else %}""{% endif %},
           available: {{ variant.available }},
           originalPrice: "{{ variant.price | money }}",
           compareAtPrice: "{{ variant.compare_at_price | money }}",
@@ -230,6 +244,20 @@
     const comparePriceSpan = priceContainer.querySelector('.compare-price');
     const currentPriceSpan = priceContainer.querySelector('.current-price');
     const variantSuggestion = document.getElementById('variantSuggestion');
+
+    // Size buttons show the per-ml price of that size with the other options as currently chosen
+    function refreshPerMl(options) {
+      optionButtons.forEach(button => {
+        const perMl = button.querySelector('.option-per-ml');
+        if (!perMl || !options) return;
+        const index = Number(button.dataset.optionIndex);
+        const wanted = options.slice();
+        wanted[index] = button.dataset.value;
+        const id = Object.keys(variantsData).find(id => variantsData[id].options.every((o, i) => o === wanted[i]));
+        perMl.innerHTML = (id && variantsData[id].perMl) || '&nbsp;';
+      });
+    }
+    refreshPerMl((variantsData[selectedVariantId] || {}).options);
 
     // Update variant selection
     function updateVariant(variantId) {
@@ -256,6 +284,7 @@
         button.classList.toggle('border-gray-200', !chosen);
         button.setAttribute('aria-pressed', chosen ? 'true' : 'false');
       });
+      refreshPerMl(variantData.options);
 
       // Update price display
       if (variantData.hasComparePrice) {

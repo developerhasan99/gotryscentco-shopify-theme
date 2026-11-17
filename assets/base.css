@@ -3664,3 +3664,8 @@ details-disclosure > details {
   padding-top: 8px;
   padding-bottom: 6px;
 }
+
+/* Option rows without a per-ml line (e.g. concentration) shouldn't look cramped next to the size row */
+#variant-selector .option-button.rvs-size-btn {
+  min-height: 46px;
+}

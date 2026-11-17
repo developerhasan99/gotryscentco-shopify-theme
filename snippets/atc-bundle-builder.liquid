@@ -19,6 +19,9 @@
         assign first_value_down = option.values.first | downcase
         assign option_kind = 'other'
         assign option_heading = 'Välj ' | append: option_name_down
+        if option_name_down contains 'koncentration' or option_name_down contains 'konzentration' or option_name_down contains 'concentration' or option_name_down contains 'zaperfumowanie' or option_name_down contains 'strength'
+          assign option_heading = 'Välj koncentration'
+        endif
         if option_name_down contains 'storlek' or option_name_down contains 'size' or option_name_down contains 'volym' or option_name_down contains 'pojemno' or option_name_down contains 'größe' or first_value_down contains 'ml'
           assign option_kind = 'size'
           assign option_heading = 'Välj Storlek'
@@ -30,7 +33,7 @@
           <div class="text-sm italic text-gray-500">50 ml - vald av 8 av 10 kunder</div>
         {% endif %}
       </div>
-      <div class="grid grid-cols-4 gap-3">
+      <div class="grid gap-3" style="grid-template-columns: repeat({{ option.values.size }}, minmax(0, 1fr));">
         {% for value in option.values %}
           {% liquid
             assign value_available = false
