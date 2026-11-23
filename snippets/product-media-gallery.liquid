@@ -3,14 +3,8 @@
 {% endif %}
 
 {% liquid
-  # Bundle products and own_gallery products must not receive marketing images
-  assign is_bundle_product = false
-
-  if product.tags contains 'Bundle_Price_Show'
-    assign is_bundle_product = true
-  endif
-
-  unless product.tags contains 'own_gallery' or is_bundle_product
+  # Products tagged 'own_gallery' show only their own images, no marketing images
+  unless product.tags contains 'own_gallery'
     assign marketing_images = shop.metaobjects['marketing_images']['swedish'].images.value
     assign da_marketing_images = shop.metaobjects['marketing_images']['danish'].images.value
     assign fi_marketing_images = shop.metaobjects['marketing_images']['finnish'].images.value
