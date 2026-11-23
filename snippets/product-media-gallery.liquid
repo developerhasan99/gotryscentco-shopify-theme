@@ -4,7 +4,7 @@
 
 {% liquid
   # Products tagged 'own_gallery' show only their own images, no marketing images
-  unless product.tags contains 'own_gallery'
+  unless product.tags contains 'own_gallery' or product.tags contains 'Bundle_Price_Show' or product.tags contains 'bundle'
     assign marketing_images = shop.metaobjects['marketing_images']['swedish'].images.value
     assign da_marketing_images = shop.metaobjects['marketing_images']['danish'].images.value
     assign fi_marketing_images = shop.metaobjects['marketing_images']['finnish'].images.value
