@@ -10,19 +10,14 @@
     </div>
   {% endif %}
 
-  {%- assign card_image = product.featured_image | default: product.images.first -%}
-
-<div class="flex relative">
-  {% if card_image != blank %}
+  <div class="flex relative">
     <img
       class="w-full h-auto"
-      src="{{ card_image | image_url: width: 600 }}"
-      alt="{{ card_image.alt | default: product.title | escape }}"
-      height="{{ card_image.height }}"
-      width="{{ card_image.width }}"
-      loading="lazy"
+      src="{{ product.images.first | image_url: width: 300 }}"
+      alt="{{ product.title }}"
+      height="{{ product.images.first.height }}"
+      width="{{ product.images.first.width }}"
     >
-  {% endif %}
     {% unless product.tags contains 'Bundle_Price_Show' %}
         {%- if settings.product_card_promo_text != blank -%}
         {%- assign promo_lines = settings.product_card_promo_text | newline_to_br | split: '<br />' -%}
