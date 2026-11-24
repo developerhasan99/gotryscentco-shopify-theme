@@ -26,14 +26,23 @@
     <div id="productSwiper" class="swiper {% unless product.template_suffix == 'draft-three' %}md:w-[calc(100%-144px)]{% endunless %}">
       <div class="swiper-wrapper">
        {% if product.tags contains "local_image" %}
-  {% assign image_found = false %}
-  {% assign curr_currency = localization.country.currency.iso_code | prepend: "bundle_" | downcase %}
+   {% assign image_found = false %}
+   {% assign market_currency = localization.country.currency.iso_code | upcase %}
 
-  {% if curr_currency == "bundle_sek" %}
-    {% assign curr_currency = "bundle_se" %}
-  {% endif %}
+   {% case market_currency %}
+    {% when 'SEK' %}
+      {% assign curr_currency = 'bundle_se' %}
+    {% when 'DKK' %}
+      {% assign curr_currency = 'bundle_dk' %}
+    {% when 'EUR' %}
+      {% assign curr_currency = 'bundle_fi' %}
+    {% when 'NOK' %}
+      {% assign curr_currency = 'bundle_no' %}
+    {% else %}
+      {% assign curr_currency = 'bundle_usd' %}
+  {% endcase %}
 
-  {%- comment -%} First: display images matching the current currency {%- endcomment -%}
+  {%- comment -%} Display only the bundle for the current market {%- endcomment -%}
   {% for image in product.images %}
     {% assign img_alt = image.alt | downcase | strip %}
 
@@ -48,12 +57,12 @@
     {% endif %}
   {% endfor %}
 
-  {%- comment -%} Second: fall back to USD images {%- endcomment -%}
+  {%- comment -%} USD fallback only; never display all market bundles {%- endcomment -%}
   {% unless image_found %}
     {% for image in product.images %}
       {% assign img_alt = image.alt | downcase | strip %}
 
-      {% if img_alt == "bundle_usd" %}
+      {% if img_alt == 'bundle_usd' %}
         {% assign image_found = true %}
         <img
           src="{{ image.src | img_url: 'master' }}"
@@ -62,18 +71,6 @@
           width="{{ image.width }}"
           class="productSwiperImage swiper-slide md:rounded-lg">
       {% endif %}
-    {% endfor %}
-  {% endunless %}
-
-  {%- comment -%} Final fallback: show product images if no currency match exists {%- endcomment -%}
-  {% unless image_found %}
-    {% for image in product.images %}
-      <img
-        src="{{ image.src | img_url: 'master' }}"
-        alt="{{ image.alt }}"
-        height="{{ image.height }}"
-        width="{{ image.width }}"
-        class="productSwiperImage swiper-slide md:rounded-lg">
     {% endfor %}
   {% endunless %}
 
@@ -201,15 +198,25 @@
   <div>
    <div id="productThumbnails" class="swiper mt-4">
   <div class="swiper-wrapper [&>.swiper-slide-thumb-active]:border-[#226139] [&>.swiper-slide-thumb-active]:opacity-100">
-    {% if product.tags contains "local_image" %}
+       
+ {% if product.tags contains "local_image" %}
   {% assign image_found = false %}
-  {% assign curr_currency = localization.country.currency.iso_code | prepend: "bundle_" | downcase %}
+  {% assign market_currency = localization.country.currency.iso_code | upcase %}
 
-  {% if curr_currency == "bundle_sek" %}
-    {% assign curr_currency = "bundle_se" %}
-  {% endif %}
+  {% case market_currency %}
+    {% when 'SEK' %}
+      {% assign curr_currency = 'bundle_se' %}
+    {% when 'DKK' %}
+      {% assign curr_currency = 'bundle_dk' %}
+    {% when 'EUR' %}
+      {% assign curr_currency = 'bundle_fi' %}
+    {% when 'NOK' %}
+      {% assign curr_currency = 'bundle_no' %}
+    {% else %}
+      {% assign curr_currency = 'bundle_usd' %}
+  {% endcase %}
 
-  {%- comment -%} First: display thumbnails matching the current currency {%- endcomment -%}
+  {%- comment -%} Display only the thumbnail for the current market {%- endcomment -%}
   {% for image in product.images %}
     {% assign img_alt = image.alt | downcase | strip %}
 
@@ -224,12 +231,12 @@
     {% endif %}
   {% endfor %}
 
-  {%- comment -%} Second: fall back to USD thumbnails {%- endcomment -%}
+  {%- comment -%} USD fallback only; never display all market bundles {%- endcomment -%}
   {% unless image_found %}
     {% for image in product.images %}
       {% assign img_alt = image.alt | downcase | strip %}
 
-      {% if img_alt == "bundle_usd" %}
+      {% if img_alt == 'bundle_usd' %}
         {% assign image_found = true %}
         <img
           src="{{ image | image_url: width: 150, height: 150 }}"
@@ -238,18 +245,6 @@
           width="150"
           class="productThumbnail swiper-slide slide max-w-16 md:max-w-24 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer">
       {% endif %}
-    {% endfor %}
-  {% endunless %}
-
-  {%- comment -%} Final fallback: show thumbnails for all product images {%- endcomment -%}
-  {% unless image_found %}
-    {% for image in product.images %}
-      <img
-        src="{{ image | image_url: width: 150, height: 150 }}"
-        alt="{{ image.alt }}"
-        height="150"
-        width="150"
-        class="productThumbnail swiper-slide slide max-w-16 md:max-w-24 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer">
     {% endfor %}
   {% endunless %}
 
@@ -284,7 +279,7 @@
         class="productThumbnail swiper-slide slide max-w-16 md:max-w-24 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer marketing_image">
     {% endfor %}
   {% endif %}
-{% endif %}
+  {% endif %}
       </div>
     </div>
   </div>
