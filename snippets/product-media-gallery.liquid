@@ -3,7 +3,13 @@
 {% endif %}
 
 {% liquid
-  # Products tagged 'own_gallery' show only their own images, no marketing images
+  # Products tagged 'own_gallery' must never display marketing images
+  assign marketing_images = blank
+  assign da_marketing_images = blank
+  assign fi_marketing_images = blank
+  assign no_marketing_images = blank
+  assign sv_marketing_images = blank
+
   unless product.tags contains 'own_gallery'
     assign marketing_images = shop.metaobjects['marketing_images']['swedish'].images.value
     assign da_marketing_images = shop.metaobjects['marketing_images']['danish'].images.value
