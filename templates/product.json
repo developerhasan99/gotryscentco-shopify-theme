@@ -24,7 +24,6 @@
         },
         "selling_points_9tdid6": {
           "type": "selling_points",
-          "disabled": true,
           "settings": {}
         },
         "inspired_by_YtFaP4": {
@@ -204,8 +203,8 @@
       "block_order": [
         "title",
         "custom_rating_text_dPCxiy",
-        "selling_points_9tdid6",
         "inspired_by_YtFaP4",
+        "selling_points_9tdid6",
         "custom_liquid_hrizd3",
         "cheaper_than_yDGYG9",
         "variant_picker",

@@ -217,14 +217,67 @@
                   </p>
                 </div>
               {%- when 'selling_points' -%}
-                <ul class="list-none p-0">
-                  {% for item in product.metafields.custom.selling_points.value %}
-                    <li class="flex gap-2 items-center text-gray-950 mb-4 leading-[1.2]">
-                      <img src="{{ 'tryscent-bottle.svg' | asset_url }}" alt="" height="24" width="24">
-                      {{ item }}
-                    </li>
-                  {% endfor %}
-                </ul>
+       {%- capture check_icon -%}
+     <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      aria-hidden="true"
+      focusable="false"
+      class="flex-none"
+     >
+       <circle cx="11" cy="11" r="11" fill="#174D3B"/>
+      <path
+       d="M6.6 11.4l2.9 2.9 5.9-5.9"
+        fill="none"
+        stroke="#fff"
+        stroke-width="1.4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    {%- endcapture -%}
+
+    {%- assign selling_points = product.metafields.custom.selling_points.value -%}
+
+   <ul
+    class="list-none flex flex-col gap-2 mt-4 mb-4 p-0"
+    {{ block.shopify_attributes }}
+   >
+    {%- if block.settings.benefit_1 != blank -%}
+      <li class="flex items-center gap-2.5 min-h-[22px] m-0 p-0 text-[15px] leading-5 font-semibold text-gray-900">
+        {{ check_icon }}
+        <span>{{ block.settings.benefit_1 }}</span>
+      </li>
+    {%- endif -%}
+
+    {%- if block.settings.benefit_2 != blank -%}
+      <li class="flex items-center gap-2.5 min-h-[22px] m-0 p-0 text-[15px] leading-5 font-semibold text-gray-900">
+        {{ check_icon }}
+        <span>{{ block.settings.benefit_2 }}</span>
+      </li>
+    {%- endif -%}
+
+    {%- if block.settings.benefit_3 != blank -%}
+      <li class="flex items-center gap-2.5 min-h-[22px] m-0 p-0 text-[15px] leading-5 font-semibold text-gray-900">
+        {{ check_icon }}
+        <span>{{ block.settings.benefit_3 }}</span>
+      </li>
+    {%- endif -%}
+
+    {%- if block.settings.benefit_1 == blank
+      and block.settings.benefit_2 == blank
+      and block.settings.benefit_3 == blank
+      and selling_points != blank
+    -%}
+      {%- for item in selling_points -%}
+        <li class="flex items-center gap-2.5 min-h-[22px] m-0 p-0 text-[15px] leading-5 font-semibold text-gray-900">
+          {{ check_icon }}
+          <span>{{ item }}</span>
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
               {%- when 'money_back' -%}
                 <div class="my-6" {{ block.shopify_attributes }}>
                   <div class="flex items-center gap-3 text-base">
@@ -273,7 +326,7 @@
                     </div>
 
                     <div class="flex min-w-0 flex-1 flex-col justify-center p-4 md:p-5">
-                     <div class="block w-full self-start -mt-4 -ml-2 text-red-600 px-1 py-1 text-sm md:text-base font-extrabold uppercase tracking-normal leading-tight">
+                     <div class="w-full self-start text-red-600 text-xs md:text-sm font-extrabold uppercase tracking-normal leading-tight">
                           BLACK FRIDAY: 40 % RABATT
                            + 2 FLASKOR PÅ KÖPET!</div>
                       <h3 class="mt-2 mb-1 tracking-normal font-semibold leading-snug text-slate-900 text-sm sm:text-base md:text-lg">
@@ -1152,11 +1205,31 @@
       "name": "Shipping Text",
       "limit": 1
     },
+       {
+  "type": "selling_points",
+  "name": "Selling Points",
+  "limit": 1,
+  "settings": [
     {
-      "type": "selling_points",
-      "name": "Selling Points",
-      "limit": 1
+      "type": "text",
+      "id": "benefit_1",
+      "label": "Claim 1",
+      "default": "20 % parfymolja för upp till 12 timmars doft"
     },
+    {
+      "type": "text",
+      "id": "benefit_2",
+      "label": "Claim 2",
+      "default": "95 % doftlikhet. Samma oljor från Grasse"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3",
+      "label": "Claim 3",
+      "default": "Utan ftalater och parabener"
+    }
+   ]
+   },
         {
       "type": "money_back",
       "name": "Money Back Guarantee",
