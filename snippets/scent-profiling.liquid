@@ -1,13 +1,3 @@
-<div class="flex gap-2 items-center">
-  <img
-    src="{{ 'icon-stopwatch.svg' |  asset_url }}"
-    alt="Watch"
-    height="24"
-    width="24">
-  <div class="font-semibold text-black text-sm md:text-base tracking-normal">
-    95% doftlikhet. Upp till 12 timmars hållbarhet.
-  </div>
-</div>
 {% if product.metafields.custom.scent_description != blank %}
   <p class="tracking-normal">
     {{ product.metafields.custom.scent_description }}
